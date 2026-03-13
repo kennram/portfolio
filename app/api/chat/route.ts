@@ -44,7 +44,7 @@ If asked for contact info or how to hire Kenn, say: "I’m always looking to app
 `;
 
     const result = streamText({
-      model: google("gemini-2.0-flash"),
+      model: google("gemini-2.5-pro"),
       system: systemPrompt,
       messages,
     });
