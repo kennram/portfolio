@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     // Format the brain data for the prompt
     const knowledgeBase = brain.map(node => `
 [${node.category}] ${node.title}
-${node.content}
+${node.content}but
 Tags: ${node.tags.join(', ')}
 ---`).join('\n');
 
@@ -44,10 +44,11 @@ If asked for contact info or how to hire Kenn, say: "I’m always looking to app
 `;
 
     const result = streamText({
-      model: google("gemini-3-flash"),
+      model: google("gemini-2.5-flash"),
       system: systemPrompt,
       messages,
     });
+
 
     return result.toDataStreamResponse({
       getErrorMessage: (error: any) => {
