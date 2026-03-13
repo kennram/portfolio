@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kenn Davis Portfolio | Socio-Technical Architect & HCD Specialist
 
-## Getting Started
+Bridging the gap between technical complexity and human need through **Systems Thinking**, **Spatial Computing**, and **Adaptive AI**.
 
-First, run the development server:
+## 🚀 Mission
+This portfolio is designed to showcase the work of **Kenn Davis**, a Socio-Technical Architect with 15+ years of experience. It focuses on high-fidelity digital experiences that connect **AI, XR, and Web** using the proprietary **3E's Design Framework** (Empathy, Efficiency, Engagement).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Technical Stack
+- **Framework:** Next.js 15+ (App Router, Turbopack)
+- **Styling:** Tailwind CSS 4 ("Luxury Dark" Teal Theme)
+- **Animations:** Framer Motion
+- **AI Integration:** Gemini 2.0 Flash (via AI SDK)
+- **Smooth Scrolling:** Lenis
+- **Background:** Custom HTML5 Canvas Particle System
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
+- **3E's Framework Integration:** Sections and case studies structured around Empathy, Efficiency, and Engagement, including deep-dive socio-technical analysis on project pages.
+- **AI Digital Twin:** An interactive AI assistant (powered by Gemini 2.0 Flash) that answers questions about Kenn's work and philosophy, featuring context-aware "active engagement" nudges and quick-tap discovery.
+- **Strategic Project Archive:** 11 high-fidelity detail pages across 4 pillars (Systems, Environments, Cognition, Intelligence), featuring "Technical Bridge" visualizations and strategic outcomes.
+- **Research Logs (The Neural Ledger):** A dynamic technical archive (/logs) featuring deep-dives into RAG architectures, behavioral design, and socio-technical models.
+- **Command Center Navigation:** A full-screen "Archive" overlay and mobile-responsive navigation system for deep site exploration.
+- **Dynamic Bento Grid:** A responsive, category-filtered project showcase with visual depth, AR/VR status indicators, and bespoke project-specific aesthetics.
+- **Strategic Expertise:** Specialized service offerings for AI Automation UX, XR & Spatial UX, and Full-Stack Design.
+- **Luxury Dark Aesthetic:** A custom teal-accented dark mode designed for high-end professional consulting.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
+- `/app`: Next.js App Router pages and layouts.
+- `/components`: Reusable UI components (BentoGrid, Header, AssistantWidget, etc.).
+- `/data`: Project metadata and research log content.
+- `/lib`: Utility functions and helper classes.
+- `/public`: Static assets and media.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-repo/kenn-davis-portfolio.git
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  **Set up environment variables:**
+    Create a `.env.local` file in the root directory:
+    ```env
+    GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key_here
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4.  **Run development server:**
+    ```bash
+    npm run dev
+    ```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Kenn Davis. Built for the future of Socio-Technical systems.

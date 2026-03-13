@@ -39,3 +39,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+\n# Dev logs and plans\ndev_output.log\ndev_plan.md\n.env.local
