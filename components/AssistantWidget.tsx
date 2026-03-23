@@ -15,9 +15,29 @@ interface AssistantWidgetProps {
 export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNudge, setShowNudge] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading, append, setInput } = useChat();
+  
+  // Use state to manage messages and initialize from sessionStorage
+  const [messages, setMessages] = useState<any[]>([]);
+  const { input, handleInputChange, handleSubmit, isLoading, append, setInput } = useChat({
+    initialMessages: messages,
+    onFinish: (message) => {
+        // We'll update the state and storage on finish
+    }
+  });
+
   const scrollRef = useRef<HTMLDivElement>(null);
   
+  useEffect(() => {
+    const savedMessages = sessionStorage.getItem("mebot_chat_history");
+    if (savedMessages) {
+      setMessages(JSON.parse(savedMessages));
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("mebot_chat_history", JSON.stringify(messages));
+  }, [messages]);
+
   // Rotating hints logic
   const [currentHintIndex, setCurrentHintIndex] = useState(0);
   const allHints = useMemo(() => projects.map(p => ({ id: p.id, hint: p.hint })), []);
@@ -37,7 +57,6 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
   }, [messages]);
 
   useEffect(() => {
-    // Show a subtle nudge after 6 seconds if the user hasn't opened the chat
     const timer = setTimeout(() => {
       if (!isOpen && messages.length === 0) {
         setShowNudge(true);
@@ -46,14 +65,11 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
     return () => clearTimeout(timer);
   }, [isOpen, messages.length]);
 
-  // Rotate hints every 15 seconds if on main page
   useEffect(() => {
     if (projectId) return;
-    
     const interval = setInterval(() => {
       setCurrentHintIndex((prev) => (prev + 1) % allHints.length);
     }, 15000);
-    
     return () => clearInterval(interval);
   }, [projectId, allHints.length]);
 
@@ -157,13 +173,11 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
               data-lenis-prevent
               className={cn(
                 "flex-1 min-h-0 overflow-y-auto p-6 space-y-4 scroll-smooth relative z-0",
-                /* Scrollbar Styles */
                 "[&::-webkit-scrollbar]:w-2",
                 "[&::-webkit-scrollbar-track]:bg-transparent",
                 "[&::-webkit-scrollbar-thumb]:bg-transparent",
                 "hover:[&::-webkit-scrollbar-thumb]:bg-white/20",
                 "[&::-webkit-scrollbar-thumb]:rounded-full",
-                /* Firefox Support */
                 "scrollbar-none hover:scrollbar-thin"
               )}
             >
@@ -188,7 +202,7 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
                   </div>
                 </div>
               )}
-              {messages.map((m) => (
+              {messages.map((m: any) => (
                 <div key={m.id} className={cn("flex", m.role === "user" ? "justify-end" : "justify-start")}>
                   <div
                     className={cn(
@@ -203,10 +217,7 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
                             {...props} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className={cn(
-                              "underline underline-offset-4 font-bold transition-colors cursor-pointer pointer-events-auto",
-                              m.role === "user" ? "text-white decoration-white/30" : "text-teal-500 decoration-teal-500/30 hover:text-teal-400"
-                            )} 
+                            className="text-teal-500 hover:text-teal-400 underline decoration-teal-500/30 underline-offset-4 font-bold transition-colors cursor-pointer pointer-events-auto"
                             onClick={(e) => e.stopPropagation()}
                           />
                         )
