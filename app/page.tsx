@@ -454,14 +454,24 @@ export default function Home() {
               I specialize in building bridges where technical complexity meets human need. Let&apos;s build yours.
             </p>
           </div>
-          <div className="flex-shrink-0">
+          <div className="flex flex-col gap-4">
             <motion.a 
-              href="mailto:kenndavisux@gmail.com" 
+              href="https://calendly.com/kenndavisux/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-12 py-6 bg-teal-500 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-teal-400 transition-colors shadow-2xl block text-center"
             >
-              Let&apos;s Build a Bridge
+              Book Discovery Call
+            </motion.a>
+            <motion.a 
+              href="mailto:kenndavisux@gmail.com" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-6 bg-white/10 border border-white/20 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-white/20 transition-colors shadow-2xl block text-center"
+            >
+              Send an Email
             </motion.a>
           </div>
         </div>
