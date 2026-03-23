@@ -30,7 +30,7 @@ export const brain: KnowledgeNode[] = [
     id: "bio-summary",
     category: "Biography",
     title: "Kenn Davis Overview",
-    content: `Kenn Davis is a Socio-Technical Architect and HCD Specialist with 15+ years of experience. MSc (1st Class Honors) in Creative Digital Media & UX. I have partnered with industry leaders including Bank of Ireland, Culture Night, Dublin Tech Summit, Getty Images, IBM, Failte Ireland, Windmill Lane Recording Studios, and Landmrk.`,
+    content: `Kenn Davis is a Socio-Technical Architect and HCD Specialist with 15+ years of experience. MSc (1st Class Honors) in Creative Digital Media & UX. I have partnered with industry leaders including Bank of Ireland, Dublin Tech Summit, Getty Images and Failte Ireland`,
     tags: ["Experience", "Education"]
   },
   {
@@ -177,9 +177,9 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "beatvyne: Global Music Marketplace & Platform",
     content: `As Co-founder & CEO of beatvyne, I co-created products to scale the company internationally by aligning UX with human cognitive pre-requisites.
-    - Impact: Secured **€50,000** in funding and achieved a **27% increase** in user engagement through extensive UX research.
-    - Partnerships: Led brand identity and marketing strategies that attracted high-profile partners like **Jameson, Getty Images, IBM, Amazon, and Adobe**.
-    - Performance: Orchestrated partnerships with world-class artists (e.g., **Björk Digital, Gorillaz**) and secured iconic spaces like **Dublin Castle** and the **GPO**, resulting in a **150% increase** in revenue from partnerships.
+    - Impact: Secured €50,000 in funding and achieved a 27% increase in user engagement through extensive UX research.
+    - Partnerships: Led brand identity and marketing strategies that attracted high-profile partners like Jameson, Getty Images and Bank of Ireland.
+    - Performance: Orchestrated collaborations with world-class artists (e.g., Björk Digital, Gorillaz) and secured iconic spaces like Dublin Castle and Christ Church Cathedral, resulting in a 150% increase in revenue from partnerships.
     - Methodology: Conducted mixed-methods research (surveys, ethnography, data analysis) to understand deep-seated user values.`,
     tags: ["MusicTech", "Leadership", "Partnerships", "Revenue Growth"]
   },
