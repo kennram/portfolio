@@ -1,7 +1,7 @@
 "use client";
 
 import { projects } from "@/data/projects";
-import { notFound } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { AssistantWidget } from "@/components/AssistantWidget";
 import { 
@@ -20,18 +20,39 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import React from "react";
+import { useLenis } from "lenis/react";
 
 export default function ProjectPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const router = useRouter();
   const resolvedParams = React.use(params);
   const project = projects.find((p) => p.id === resolvedParams.id);
+  const lenis = useLenis();
+
+  React.useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [resolvedParams.id, lenis]);
 
   if (!project) {
     notFound();
   }
+
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // If the history length is 1, it means the user landed directly on this page
+    if (window.history.length <= 1) {
+      router.push(`/#${project.pillar.toLowerCase()}`);
+    } else {
+      router.back();
+    }
+  };
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -61,13 +82,13 @@ export default function ProjectPage({
       >
         {/* Back Button */}
         <motion.div variants={itemVariants}>
-          <Link 
-            href="/" 
+          <button 
+            onClick={handleBack}
             className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground hover:text-teal-500 transition-colors mb-8 md:mb-12 group"
           >
             <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
             Back to Portfolio
-          </Link>
+          </button>
         </motion.div>
 
         {/* Header Section */}
@@ -122,7 +143,7 @@ export default function ProjectPage({
           </motion.div>
         )}
 
-        {/* The "Wicked Problem" Visualization */}
+        {/* The Problem Visualization */}
         <motion.div 
           variants={itemVariants}
           className="relative p-[1px] rounded-[1.5rem] md:rounded-[2.5rem] bg-gradient-to-br from-teal-500/20 via-transparent to-transparent mb-16 md:mb-32"
@@ -132,10 +153,10 @@ export default function ProjectPage({
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-teal-500">
                   <AlertCircle className="w-4 h-4 md:w-5 md:h-5" />
-                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">The Wicked Problem</span>
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">The Problem</span>
                 </div>
                 <p className="text-xl md:text-2xl font-medium tracking-tight leading-tight">
-                  {project.wickedProblem}
+                  {project.problem}
                 </p>
               </div>
 
@@ -155,7 +176,7 @@ export default function ProjectPage({
 
               <div className="space-y-4 lg:text-right">
                 <div className="flex items-center gap-3 text-teal-500 lg:justify-end">
-                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">The Strategic Solution</span>
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-bold">The Solution</span>
                   <Workflow className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <p className="text-xl md:text-2xl font-medium tracking-tight leading-tight">
@@ -278,7 +299,7 @@ export default function ProjectPage({
         </div>
       </motion.div>
 
-      <AssistantWidget />
+      <AssistantWidget projectId={project.id} />
 
       {/* Footer */}
       <footer className="px-6 md:px-12 py-12 md:py-16 border-t border-white/5 text-[9px] md:text-[10px] uppercase tracking-[0.5em] text-muted-foreground/40 text-center font-bold">

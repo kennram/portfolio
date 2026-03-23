@@ -4,7 +4,7 @@ export interface Project {
   pillar: "Systems" | "Environments" | "Cognition" | "Intelligence";
   category: string;
   description: string;
-  wickedProblem: string;
+  problem: string;
   humanNeed: string;
   technicalBridge: string;
   engagementMetric: string;
@@ -16,6 +16,7 @@ export interface Project {
   image?: string;
   span: "small" | "medium" | "large";
   isSpatial?: boolean;
+  hint: string;
 }
 
 export const projects: Project[] = [
@@ -25,20 +26,22 @@ export const projects: Project[] = [
     pillar: "Systems",
     category: "Scalable Systems",
     description: "An AI-powered IoT initiative focused on national sustainable energy practices and grid resilience.",
-    wickedProblem: "Large-scale IoT telemetry is often too abstract for meaningful human-centered energy action.",
+    problem: "Large-scale IoT telemetry is often too abstract for meaningful human-centered energy action.",
     humanNeed: "Translating sophisticated telemetry into an uncompromisingly accessible and actionable experience for diverse stakeholders.",
     technicalBridge: "Led the product team across iOS, Android, and Web to create a unified design language and high-fidelity interactive MVP.",
-    engagementMetric: "Secured €2M in Prize Phase funding via the €65M National Challenge Fund.",
-    longDescription: "As the Product & Design lead, I managed the full UX lifecycle for RENEW, a critical component of Ireland's 'National Recovery and Resilience Plan.' I collaborated asynchronously with an international team to code the frontend for a high-fidelity MVP, bridging the gap between large-scale sensor data and human utility.",
+    engagementMetric: "Helped secure €2M in Prize Phase funding via the €65M National Challenge Fund.",
+    longDescription: "As the Product & Design lead for RENEW—an IRESI initiative as part of Maynooth University—I managed the full UX lifecycle for a critical component of Ireland's 'National Recovery and Resilience Plan.' I collaborated asynchronously with an international team to code the frontend for a high-fidelity MVP, bridging the gap between large-scale sensor data and human utility. Our collective efforts were a crucial factor in securing national-level scaling funding.",
     outcomes: [
-      "Secured €2M in national scaling funding.",
+      "Helped secure €2M in national scaling funding.",
       "Unified design language across iOS, Android, and Web platforms.",
-      "Crucial deciding factor for national-level sustainable energy infrastructure."
+      "Crucial factor for national-level sustainable energy infrastructure."
     ],
     techStack: ["IoT", "AI", "React", "Swift", "Kotlin", "TypeScript"],
     tags: ["Sustainability", "National Infrastructure", "Energy"],
+    link: "https://www.iresi.eu/renew/",
     image: "/projects/renew.jpeg",
     span: "large",
+    hint: "Curious how I helped secure €2M for RENEW?",
   },
   {
     id: "net-zero",
@@ -46,7 +49,7 @@ export const projects: Project[] = [
     pillar: "Systems",
     category: "Scalable Systems",
     description: "A mobile platform providing instant sustainability transparency through barcode scanning and curated data.",
-    wickedProblem: "Modern consumers are paralyzed by a saturated market and misleading 'green' labels, leading to skepticism and decision fatigue.",
+    problem: "Modern consumers are paralyzed by a saturated market and misleading 'green' labels, leading to skepticism and decision fatigue.",
     humanNeed: "Turning time-consuming sustainability research into a single-button action integrated into the 'on-the-go' shopping experience.",
     technicalBridge: "Led the design of a barcode-scanning interface that maps complex curated ESG data to instant consumer feedback.",
     engagementMetric: "Significant reduction in user research time per purchase during pilot testing.",
@@ -60,6 +63,7 @@ export const projects: Project[] = [
     tags: ["Sustainability", "ESG Transparency", "Mobile Design"],
     image: "/projects/netzero.jpg",
     span: "medium",
+    hint: "Want to know how we turned ESG data into a 1-click action?",
   },
   {
     id: "lost-voices",
@@ -67,7 +71,7 @@ export const projects: Project[] = [
     pillar: "Environments",
     category: "Immersive Environments",
     description: "A cross-platform immersive experience (VR, Web, Mobile) empowering climate action through narrative.",
-    wickedProblem: "Traditional education often fails to convey the scale and emotional weight of the climate crisis.",
+    problem: "Traditional education often fails to convey the scale and emotional weight of the climate crisis.",
     humanNeed: "Engaging players in an emotionally resonant journey that moves them from virtual exploration to real-world action.",
     technicalBridge: "Led project management, creative direction, and development to create a cohesive experience across VR, Web, and Mobile.",
     engagementMetric: "Measured increase in climate advocacy engagement among players.",
@@ -82,6 +86,7 @@ export const projects: Project[] = [
     image: "/projects/lost-voices.jpg",
     span: "large",
     isSpatial: true,
+    hint: "Ask how VR moves people from virtual exploration to climate action.",
   },
   {
     id: "traylz",
@@ -89,7 +94,7 @@ export const projects: Project[] = [
     pillar: "Environments",
     category: "Immersive Environments",
     description: "AR-driven heritage exploration platform, treating locations as living records.",
-    wickedProblem: "Historical significance is often lost in modern urban development.",
+    problem: "Historical significance is often lost in modern urban development.",
     humanNeed: "Mapping human narratives onto the built environment to preserve cultural identity.",
     technicalBridge: "Used AR-anchoring to create 'Ghost Windows'—mapping historical coordinates to physical space.",
     engagementMetric: "40% increase in site engagement among younger demographics.",
@@ -104,6 +109,7 @@ export const projects: Project[] = [
     image: "/projects/traylz.jpeg",
     span: "medium",
     isSpatial: true,
+    hint: "Ask how 'Ghost Windows' are preserving heritage through AR.",
   },
   {
     id: "beatvyne",
@@ -111,22 +117,23 @@ export const projects: Project[] = [
     pillar: "Environments",
     category: "Immersive Environments",
     description: "A global digital ecosystem and live music marketplace connecting artists, hosts, fans, and brands.",
-    wickedProblem: "Fragmented music ecosystems hindered artists from finding venues and fans from discovering unique local experiences.",
+    problem: "Fragmented music ecosystems hindered artists from finding venues and fans from discovering unique local experiences.",
     humanNeed: "Empowering all stakeholders through a user-centric platform that simplifies event management and fosters genuine social connection.",
-    technicalBridge: "Led foundational UX research and strategic design to build a brand and platform that attracted collaborators like IBM, Universal Music, and Getty Images.",
-    engagementMetric: "Validated concept through key strategic partnerships and high-profile collaborations.",
-    longDescription: "As Co-founder and CEO, I directed the vision for beatvyne to establish it as a thought leader at the intersection of music and technology. This culminated in the 'Music x Tech Experience.' My role combined strategic leadership with hands-on generative research, translating deep user insights into a platform strategy that bridged the gap between fragmented industry needs and high-profile brand objectives.",
+    technicalBridge: "Led foundational UX research and design to build a brand and platform that attracted collaborators like IBM, Universal Music, and Getty Images.",
+    engagementMetric: "Validated concept through key partnerships and high-profile collaborations.",
+    longDescription: "As Co-founder and CEO, I directed the vision for beatvyne to establish it as a thought leader at the intersection of music and technology. This culminated in the 'Music x Tech Experience.' My role combined leadership with hands-on generative research, translating deep user insights into a platform strategy that bridged the gap between fragmented industry needs and high-profile brand objectives.",
     outcomes: [
-      "Established strategic partnerships with IBM, Universal Music, and Getty Images.",
+      "Established partnerships with IBM, Universal Music, and Getty Images.",
       "Created the 'Music x Tech Experience' thought leadership initiative.",
       "Translated foundational UX research into a validated, user-centric ecosystem strategy."
     ],
-    techStack: ["UX Research", "Strategic Design", "Ecosystem Mapping", "Product Vision"],
-    tags: ["Music Tech", "Marketplace", "Strategic UX"],
+    techStack: ["UX Research", "Design Strategy", "Ecosystem Mapping", "Product Vision"],
+    tags: ["Music Tech", "Marketplace", "UX Strategy"],
     link: "https://www.beatvyne.com",
     image: "/projects/beatvyne.jpg",
     span: "medium",
     isSpatial: true,
+    hint: "Ask how I built partnerships with IBM and Sony Music.",
   },
   {
     id: "elysium",
@@ -134,7 +141,7 @@ export const projects: Project[] = [
     pillar: "Cognition",
     category: "Cognitive Architecture",
     description: "A purposeful VR wellness experience designed to alleviate acute stress and sensory confinement in restrictive environments.",
-    wickedProblem: "The 'Confinement Paradox'—where life-saving clinical care or global travel environments create extreme restriction, sensory overload, and a total loss of user agency.",
+    problem: "The 'Confinement Paradox'—where life-saving clinical care or global travel environments create extreme restriction, sensory overload, and a total loss of user agency.",
     humanNeed: "Sensory regulation and a restored sense of 'world.' Users need to transition from passive, trapped observers to active participants in a restorative, biophilic environment.",
     technicalBridge: "Synthesized Unity with interactive narrative puzzles and a modular architecture (Foxoony onboarding guide) to synchronize environmental pacing with user movement.",
     engagementMetric: "70% of users preferred interactive biophilic mechanics over passive VR, reporting a deep state of 'flow' and significant reduction in perceived confinement time.",
@@ -150,6 +157,7 @@ export const projects: Project[] = [
     image: "/projects/elysium.jpg",
     span: "large",
     isSpatial: true,
+    hint: "Curious how we use VR to reduce stress in restrictive environments?",
   },
   {
     id: "connect-tfi",
@@ -157,7 +165,7 @@ export const projects: Project[] = [
     pillar: "Cognition",
     category: "Cognitive Architecture",
     description: "Transforming a utilitarian transport tool into a secure, social companion to reduce safety barriers in public travel.",
-    wickedProblem: "Users reported significant frustration with complexity and a growing sense of insecurity during public travel.",
+    problem: "Users reported significant frustration with complexity and a growing sense of insecurity during public travel.",
     humanNeed: "Reducing the 'perceived lack of safety' and antisocial behavior barriers through social connection.",
     technicalBridge: "Integrated a social travel layer into the TFI ecosystem using real-time location sharing and group coordination.",
     engagementMetric: "Improved user sentiment regarding safety and social ease in pilot conceptual tests.",
@@ -171,6 +179,7 @@ export const projects: Project[] = [
     tags: ["Mobility", "Social Design", "Urban Safety"],
     image: "/projects/connect-tfi.jpg",
     span: "medium",
+    hint: "Ask how we're making public transport feel safer through social design.",
   },
   {
     id: "questquill",
@@ -178,7 +187,7 @@ export const projects: Project[] = [
     pillar: "Intelligence",
     category: "Adaptive Intelligence",
     description: "A next-generation AI literacy platform transforming reading into immersive, adaptive discovery.",
-    wickedProblem: "Static education models and the 'engagement gap' in traditional literacy programs that fail to address diverse cognitive needs.",
+    problem: "Static education models and the 'engagement gap' in traditional literacy programs that fail to address diverse cognitive needs.",
     humanNeed: "Turning curiosity into mastery through hero-centric adventures and a personalized difficulty curve that fosters a lifelong love for reading.",
     technicalBridge: "Architected a generative literacy engine using Gemini 2.0 and a real-time data pipeline to map behavioral telemetry to pedagogical insights.",
     engagementMetric: "Validated engagement through hero-centric quest loops and automated differentiation for educators.",
@@ -193,6 +202,7 @@ export const projects: Project[] = [
     link: "https://questquill.vercel.app/",
     image: "/projects/questquill.jpg",
     span: "medium",
+    hint: "Want to know how AI is transforming reading into an adaptive adventure?",
   },
   {
     id: "spectrum-ai",
@@ -200,7 +210,7 @@ export const projects: Project[] = [
     pillar: "Intelligence",
     category: "Adaptive Intelligence",
     description: "An AI-powered support agent providing empathetic, evidence-based guidance for parents of newly diagnosed children with autism.",
-    wickedProblem: "The 'Perfect Storm' of information overload and critical support gaps parents face during an initial autism diagnosis.",
+    problem: "The 'Perfect Storm' of information overload and critical support gaps parents face during an initial autism diagnosis.",
     humanNeed: "An empathetic, 24/7 'first responder' that translates complex clinical jargon into actionable early-intervention steps.",
     technicalBridge: "Architected a RAG (Retrieval-Augmented Generation) system using Gemini Pro and ChromaDB to anchor AI responses to a curated knowledge base.",
     engagementMetric: "Democratized access to specialized support, reducing the 'time-to-action' during the critical early-intervention window.",
@@ -215,6 +225,7 @@ export const projects: Project[] = [
   
     image: "/projects/spectrum-ai.jpg",
     span: "large",
+    hint: "Ask how we're using RAG to support parents of newly diagnosed children.",
   },
   {
     id: "ooda",
@@ -222,11 +233,11 @@ export const projects: Project[] = [
     pillar: "Systems",
     category: "Scalable Systems",
     description: "An immersive business simulation translating military strategy into a high-stakes startup board game.",
-    wickedProblem: "The 'Fog of Startup War'—where traditional business education fails to capture the non-linear, high-stakes reality of rapid-fire decision making.",
-    humanNeed: "Safe-to-fail strategic intuition; a 'flight simulator' for leaders to build muscle memory in resource allocation and collaborative negotiation.",
+    problem: "The 'Fog of Startup War'—where traditional business education fails to capture the non-linear, high-stakes reality of rapid-fire decision making.",
+    humanNeed: "Safe-to-fail intuition; a 'flight simulator' for leaders to build muscle memory in resource allocation and collaborative negotiation.",
     technicalBridge: "Architected a generative AI-driven scenario engine to balance complex game rules and create 50+ contextually relevant market disruptions.",
     engagementMetric: "Over 50 AI-generated scenarios across 4 startup lifecycle phases; designed for leadership accelerators and corporate agility programs.",
-    longDescription: "OODA is a physical/digital hybrid simulation that bridges military strategy with business logic. By leveraging Generative AI to craft realistic scenarios and balance resource dynamics (Cash, Product, Talent, Morale), the project provides a low-risk environment for teams to sharpen their strategic OODA loop (Observe-Orient-Decide-Act) under pressure.",
+    longDescription: "OODA is a physical/digital hybrid simulation that bridges military strategy with business logic. By leveraging Generative AI to craft realistic scenarios and balance resource dynamics (Cash, Product, Talent, Morale), the project provides a low-risk environment for teams to sharpen their OODA loop (Observe-Orient-Decide-Act) under pressure.",
     outcomes: [
       "Dynamic Rule Balancing: Used GenAI to simulate and refine game mechanics for optimal complexity.",
       "Visual Immersion: Created a cohesive visual language for resource states using AI-driven asset generation.",
@@ -236,6 +247,7 @@ export const projects: Project[] = [
     tags: ["Systems Thinking", "Simulation", "Strategy", "Game Design"],
     image: "/projects/ooda.jpg",
     span: "medium",
+    hint: "Ask how we're using GenAI to simulate the 'Fog of Startup War'.",
   },
   {
     id: "shape-burst",
@@ -243,14 +255,14 @@ export const projects: Project[] = [
     pillar: "Cognition",
     category: "Cognitive Architecture",
     description: "A high-performance 3D interactive system exploring the boundary between generative art and cognitive engagement.",
-    wickedProblem: "The '8-second attention span' and the perceived coldness of complex digital systems.",
+    problem: "The '8-second attention span' and the perceived coldness of complex digital systems.",
     humanNeed: "Designing rewarding, high-contrast feedback loops that sustain focus and invite intuitive interaction.",
     technicalBridge: "Architected a modular Three.js/WebGL engine with independent classes for particle bursts and constellation lines, reducing development time by 70% through AI-assisted workflows.",
     engagementMetric: "Live prototype deployed at shapeburst.netlify.app; optimized for universal touch and performance.",
-    longDescription: "Shape Burst is more than a game; it is a proxy for human-centric system design. By utilizing Three.js and particle physics, I created an environment where complex code responds to human presence with cinematic fluidity. The project explores cross-industry applications—from gamified cognitive training for ADHD to immersive 3D data visualization for fintech.",
+    longDescription: "Shape Burst is more than a game; it is a proxy for human-centric system design. By utilizing Three.js and particle physics, I created an environment where complex code responds to human presence with cinematic fluidity. The project explores applications—from gamified cognitive training for ADHD to immersive 3D data visualization for fintech.",
     outcomes: [
       "Pioneered a modular 3D architecture for rapid creative scaling.",
-      "Identified strategic applications in cognitive healthcare and marketing 'dwell time.'",
+      "Identified applications in cognitive healthcare and marketing 'dwell time.'",
       "Created a high-fidelity bridge between abstract code and sensory delight."
     ],
     techStack: ["Three.js", "WebGL", "JavaScript (Modular)", "AI-Assisted Dev"],
@@ -258,5 +270,6 @@ export const projects: Project[] = [
     image: "/projects/shape-burst.jpg",
     link: "https://shapeburst.netlify.app",
     span: "small",
+    hint: "Curious how 3D generative art can improve cognitive engagement?",
   },
 ];

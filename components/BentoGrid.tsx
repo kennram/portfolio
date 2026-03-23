@@ -175,7 +175,7 @@ export const BentoGrid = ({ category }: BentoGridProps) => {
                         className="text-xs text-teal-400 font-medium uppercase tracking-widest flex items-center gap-2"
                       >
                         <AlertCircle className="w-3 h-3 flex-shrink-0" /> 
-                        <span className="line-clamp-2">The Challenge: {project.wickedProblem}</span>
+                        <span className="line-clamp-2">The Challenge: {project.problem}</span>
                       </motion.div>
                     ) : (
                       <motion.p
@@ -184,7 +184,7 @@ export const BentoGrid = ({ category }: BentoGridProps) => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="text-sm text-muted-foreground/80 max-w-[280px] line-clamp-2"
+                        className="text-sm text-foreground/80 max-w-[280px] line-clamp-2"
                       >
                         {project.description}
                       </motion.p>
@@ -196,7 +196,7 @@ export const BentoGrid = ({ category }: BentoGridProps) => {
                   {project.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="text-[9px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-muted-foreground uppercase tracking-wider group-hover:border-teal-500/20 group-hover:text-teal-400 transition-colors"
+                      className="text-[9px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-foreground/60 uppercase tracking-wider group-hover:border-teal-500/20 group-hover:text-teal-400 transition-colors"
                     >
                       {tag}
                     </span>

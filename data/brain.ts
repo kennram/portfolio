@@ -1,6 +1,7 @@
 export interface KnowledgeNode {
   id: string;
   category: "Philosophy" | "Project" | "Methodology" | "Biography" | "Technical" | "Service";
+  // title: string;
   title: string;
   content: string;
   tags: string[];
@@ -33,6 +34,77 @@ export const brain: KnowledgeNode[] = [
     tags: ["Experience", "Education"]
   },
   {
+    id: "service-web-app",
+    category: "Service",
+    title: "Product Design & Full-Stack Development",
+    content: `I architect and build scalable, high-performance web and mobile applications that bridge the gap between technical complexity and human need.
+    - Full-Stack Mastery: Expert in React, Next.js, and Python, ensuring seamless performance from the database to the interface.
+    - Human-Centered Engineering: Applying the 3E's (Empathy, Efficiency, Engagement) to every line of code to reduce friction and drive user adoption.
+    - Socio-Technical Edge: Designing solutions that account for both technological constraints and shifting human behaviors.`,
+    tags: ["Web Dev", "Mobile App", "React", "Next.js", "Python", "Full-Stack"]
+  },
+  {
+    id: "service-ixd",
+    category: "Service",
+    title: "Human-Centered Interaction Design (IxD)",
+    content: `I ensure effortless engagement by designing intuitive interfaces that respect human cognition and adapt to project-specific constraints.
+    - Behavioral Nudging: Using cognitive architecture to move users from passive observers to active participants.
+    - Sensory Regulation: Designing for safety and focus, ensuring digital interactions (from wayfinding to VR) don't overwhelm the user.
+    - Adaptive Workflows: Offering both high-velocity AI-accelerated prototyping and high-fidelity, high-rigor traditional research paths based on client need and data sensitivity.`,
+    tags: ["IxD", "Interaction Design", "UX", "Cognitive Load", "Behavioral Science"]
+  },
+  {
+    id: "service-branding",
+    category: "Service",
+    title: "Strategic Branding & Visual Identity",
+    content: `I craft user-centric brand experiences designed for enduring growth in both digital and physical realms.
+    - Phygital Narrative: Weaving brand identity across tangible touchpoints and virtual interfaces for a seamless user journey.
+    - Future-Proof Identity: Extending brand reach into immersive XR environments and AI-driven interactions.
+    - Audience-Centricity: Centering all visual and narrative efforts around core human needs to foster long-term loyalty and trust.`,
+    tags: ["Branding", "Brand Strategy", "Narrative", "Visual Identity", "Phygital"]
+  },
+  {
+    id: "service-ai",
+    category: "Service",
+    title: "AI Service Design & Orchestration",
+    content: `I architect intelligent solutions through purposeful and responsible design, turning AI into an empathetic partner.
+    - Sophisticated AI Agents: Leveraging Gemini 2.5 and RAG (Retrieval-Augmented Generation) to solve complex business challenges.
+    - Workflow Acceleration: Streamlining operations through proactive, context-aware information and automated differentiation.
+    - Trust & Clarity: Building confidence by ensuring AI reasoning is transparent and users remain in control.`,
+    tags: ["AI", "Service Design", "AI Agents", "Trust", "RAG", "Gemini"]
+  },
+  {
+    id: "service-xr",
+    category: "Service",
+    title: "XR Product Design & Strategy",
+    content: `I craft immersive XR (AR/VR/MR) solutions with real-world impact, leveraging the 'always-on' potential of the spatial web.
+    - Brand Activations: Memorable virtual experiences that amplify presence and engagement.
+    - Training & Simulations: Creating realistic, biophilic environments for skill development and sensory wellness (e.g., Elysium).
+    - Spatial Web Strategy: Defining the vision and journey mapping across physical and virtual domains.`,
+    tags: ["XR", "VR", "AR", "Metaverse", "Spatial Web", "Unity"]
+  },
+  {
+    id: "service-phygital",
+    category: "Service",
+    title: "Phygital Design & Strategy",
+    content: `I specialize in Phygital Design—the seamless merging of physical and digital interactions to enrich attendee and customer experiences.
+    - Integrated Blueprints: Mapping journeys across tangible and virtual domains (e.g., wayfinding apps for physical events).
+    - Experiential Design: Strategically incorporating digital elements to foster deeper engagement at events (e.g., beatvyne DTS).
+    - Utility-First Tech: Using design thinking to create phygital interactions that offer clear, immediate value.`,
+    tags: ["Phygital", "Strategy", "User Journey", "Events", "Service Design"]
+  },
+  {
+    id: "methodology-adaptive-hcd",
+    category: "Methodology",
+    title: "Adaptive Human-Centered Design Cycle",
+    content: `I follow a flexible, four-stage HCD process that adapts to project velocity and rigor requirements:
+    - Discovery & Research: Aligning user needs with market trends via deep ethnography or high-speed market synthesis.
+    - Ideation & Conceptualization: Exploring a high volume of solutions, choosing between AI-enhanced speed or deep-human ideation loops.
+    - Design & Prototyping: Creating high-fidelity interactive models, using AI-accelerated tools for speed-to-market when efficiency is the primary E.
+    - Testing & Validation: Rigorous data-driven cycles ensuring every insight is traceable to the final, functional solution.`,
+    tags: ["HCD", "Design Thinking", "Adaptive Workflow", "Research", "Validation"]
+  },
+  {
     id: "bio-education",
     category: "Biography",
     title: "Academic Foundation & Advanced Training",
@@ -43,60 +115,6 @@ export const brain: KnowledgeNode[] = [
     - Post Grad Cert in Innovation & New Business Development, Dublin City University (2014).
     - Specialized AI Training: Google Advanced Gen AI (2025), ChatGPT Prompt Engineering for Developers (DeepLearning.AI, 2024), and AI & Creative Tech (Oxford Summer School, 2024).`,
     tags: ["Education", "MSc", "AI", "Harvard", "UCD", "TUDublin", "DCU"]
-  },
-  {
-    id: "service-phygital",
-    category: "Service",
-    title: "Phygital Design & Strategy",
-    content: `I specialize in Phygital Design—the seamless merging of physical and digital interactions. This involves:
-    - Phygital Strategy & Blueprint: Defining visions and journey mapping across tangible and virtual domains (e.g., wayfinding apps).
-    - Intuitive Applications: Powering the digital core of physical touchpoints.
-    - Experiential Event Design: Strategically incorporating digital elements to enrich attendee experiences (e.g., beatvyne DTS).
-    Approach: Using design thinking workshops to create interactions that offer enhanced utility and foster deeper engagement.`,
-    tags: ["Phygital", "Strategy", "User Journey", "Events"]
-  },
-  {
-    id: "service-xr",
-    category: "Service",
-    title: "XR Product Design & Strategy",
-    content: `I craft immersive XR solutions with real-world impact across devices. Expertise includes:
-    - Brand Activations: Memorable virtual experiences that amplify presence.
-    - Training Simulations: Realistic environments for enhanced skill development.
-    - Team Building & Conferences: Dynamic, accessible virtual spaces that connect attendees globally.
-    Focus: Leveraging the 'always-on' potential of XR to leave lasting impressions and unlock new business possibilities.`,
-    tags: ["XR", "VR", "Metaverse", "Simulations", "Conferences"]
-  },
-  {
-    id: "service-ai",
-    category: "Service",
-    title: "AI Service Design",
-    content: `I architect intelligent solutions through purposeful and responsible design. Focus areas:
-    - Sophisticated AI Agents: Solving complex challenges and enabling novel business models.
-    - Workflow Acceleration: Streamlining processes and providing proactive, context-aware information.
-    - Trust & Clarity: Building confidence through clear communication of AI reasoning and user control.
-    Goal: Transforming AI from a cold system into a helpful, understanding partner that yields significant insights and drives growth.`,
-    tags: ["AI", "Service Design", "AI Agents", "Trust", "Ethics"]
-  },
-  {
-    id: "methodology-ixd",
-    category: "Methodology",
-    title: "Human-Centered Interaction Design (IxD)",
-    content: `My IxD methodology ensures effortless engagement across every brand touchpoint. 
-    - Principles: Rooted in deep understanding of user behavior to identify friction points and ensure seamless transitions.
-    - Application: Designing intuitive interfaces that bridge worlds—from wayfinding navigation to digital check-ins at physical events.
-    - Outcome: Transforming functional apps into valuable tools that customers rely on and enjoy using.`,
-    tags: ["IxD", "Interaction Design", "UX", "Navigation"]
-  },
-  {
-    id: "methodology-branding",
-    category: "Service",
-    title: "Strategic Branding & Brand Strategy",
-    content: `Crafting user-centric brand experiences for enduring growth. 
-    - Phygital Branding: Weaving brand narrative and visual identity across physical and digital realms.
-    - XR Branding: Extending brand reach into immersive digital environments for profound relationships.
-    - AI Branding: Personalizing connections and enhancing value through intelligent, data-informed interactions.
-    Strategy: Centering all efforts around audience needs to foster long-term loyalty.`,
-    tags: ["Branding", "Brand Strategy", "Narrative", "Visual Identity"]
   },
   {
     id: "technical-stack",
@@ -117,7 +135,7 @@ export const brain: KnowledgeNode[] = [
     - Concept: Based on the military strategy 'Observe, Orient, Decide, Act' loop.
     - Mechanics: Players navigate 7 startup phases (Idea, Market Entry, Growth, Establishment, Diversification, Maturity, Exit) across 210 tiles.
     - Learning Value: Uses experiential learning to make complex business concepts accessible and memorable. It serves as a training tool for accelerators, brands, and universities to identify leaders and nurture strategic thinking.
-    - Key Innovation: Players manage four critical resources—Cash, Product, Talent, and Morale—while navigating 'Wicked Problems' through rapid decision-making loops.`,
+    - Key Innovation: Players manage four critical resources—Cash, Product, Talent, and Morale—while navigating complex challenges through rapid decision-making loops.`,
     tags: ["Simulation", "Gamification", "Business Strategy", "Experiential Learning"]
   },
   {
@@ -127,7 +145,7 @@ export const brain: KnowledgeNode[] = [
     content: `I integrate Generative AI as a core partner in my development and design workflows.
     - Case Study (OODA): AI was integral to developing game mechanics, conceptualizing rule scenarios for balance, and crafting realistic challenge/opportunity cards.
     - Visual Synthesis: Used AI to generate diverse, contextually relevant imagery for game phases and resource cards (Cash, Product, Talent, Morale).
-    - Strategic Simulation: AI assisted in refining game balance by simulating various entrepreneurial scenarios to ensure a realistic 'roller-coaster' experience.`,
+    - Simulation: AI assisted in refining game balance by simulating various entrepreneurial scenarios to ensure a realistic 'roller-coaster' experience.`,
     tags: ["GenAI", "Workflow", "Visual Synthesis", "Iterative Design"]
   },
   {
@@ -159,7 +177,7 @@ export const brain: KnowledgeNode[] = [
     title: "beatvyne: Global Music Marketplace & Platform",
     content: `As Co-founder & CEO of beatvyne, I co-created products to scale the company internationally by aligning UX with human cognitive pre-requisites.
     - Impact: Secured **€50,000** in funding and achieved a **27% increase** in user engagement through extensive UX research.
-    - Strategic Partnerships: Led brand identity and marketing strategies that attracted high-profile partners like **Jameson, Getty Images, IBM, Amazon, and Adobe**.
+    - Partnerships: Led brand identity and marketing strategies that attracted high-profile partners like **Jameson, Getty Images, IBM, Amazon, and Adobe**.
     - Performance: Orchestrated partnerships with world-class artists (e.g., **Björk Digital, Gorillaz**) and secured iconic spaces like **Dublin Castle** and the **GPO**, resulting in a **150% increase** in revenue from partnerships.
     - Methodology: Conducted mixed-methods research (surveys, ethnography, data analysis) to understand deep-seated user values.`,
     tags: ["MusicTech", "Leadership", "Partnerships", "Revenue Growth"]
@@ -169,7 +187,7 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "Music x Tech Experience (DTS Conference)",
     content: `I co-created and implemented an annual conference exploring the intersection of technology, creativity, and sustainability.
-    - Strategic Intelligence: Attracted leading innovators from **Amazon, IBM, and Adobe**.
+    - Intelligence: Attracted leading innovators from **Amazon, IBM, and Adobe**.
     - Leadership & Coordination: Coordinated up to **80 contractors and speakers** to deliver the event.
     - Impact: Achieved an overall **productivity increase of 25%** through streamlined operational workflows and innovative collaboration methods like the 'World Café' workshop approach.`,
     tags: ["Events", "Socio-Technical", "Leadership", "Productivity"]
@@ -196,9 +214,9 @@ export const brain: KnowledgeNode[] = [
   {
     id: "bio-trinity-college",
     category: "Biography",
-    title: "Strategic Data Analysis & Process Optimization (TCD)",
+    title: "Data Analysis & Process Optimization (TCD)",
     content: `At Trinity College Dublin, I applied data science methods to analyze enrollment trends and student-to-staff ratios for **World University Rankings** and government reporting.
-    - Decision Support: Produced comprehensive reports for the university board to inform strategic management and budget planning.
+    - Decision Support: Produced comprehensive reports for the university board to inform management and budget planning.
     - Optimization: Streamlined student achievement awards, addressed workflow bottlenecks in the Academic Registry, and developed a **smart inventory system** to improve resource allocation.
     - Tech Integration: Identified opportunities to leverage AI and automation to further optimize university procedures.`,
     tags: ["Data Science", "Trinity College", "Process Optimization", "Strategy"]
@@ -225,9 +243,9 @@ export const brain: KnowledgeNode[] = [
     id: "project-traylz-deep",
     category: "Project",
     title: "TRAYLZ: Augmented Reality for Smart Tourism",
-    content: `I provided strategic leadership for TRAYLZ, a first-of-its-kind AR application featuring interlinked location-based narratives.
+    content: `I provided leadership for TRAYLZ, a first-of-its-kind AR application featuring interlinked location-based narratives.
     - Impact: Co-raised funding through the **Blackstone/Techstars LaunchPad Fellowship** and secured a position on Enterprise Ireland’s New Frontiers Programme.
-    - Strategic Partnerships: Established product-market fit with key clients including **Fáilte Ireland and Sony Music**.
+    - Partnerships: Established product-market fit with key clients including **Fáilte Ireland and Sony Music**.
     - Innovation: Co-designed and executed a location-based AR experience for **Dublin Tech Summit**, enhancing user engagement through immersive storytelling.
     - Methodology: Applied primary market research and UX methodologies to align technical roadmaps with the needs of diverse industry and academic stakeholders.
     - Technical Execution: Designed brand identity and developed a responsive web platform for fundraising and initial expressions of interest.`,
@@ -248,8 +266,8 @@ export const brain: KnowledgeNode[] = [
     id: "project-renew-deep",
     category: "Project",
     title: "RENEW: AI-Powered Energy IoT",
-    content: `I led the product and design team for RENEW, an AI-powered IoT initiative supporting Ireland's 'National Recovery and Resilience Plan.'
-    - Impact: The project was a crucial deciding factor in securing **€2 Million in Prize Phase funding** (via the €65M National Challenge Fund) to scale nationwide.
+    content: `I led the product and design team for RENEW, an IRESI initiative as part of Maynooth University. RENEW is an AI-powered IoT initiative supporting Ireland's 'National Recovery and Resilience Plan.'
+    - Impact: Our collective effort was a crucial deciding factor in helping secure **€2 Million in Prize Phase funding** (via the €65M National Challenge Fund) to scale nationwide.
     - Leadership: Managed the full UX lifecycle and asynchronous collaboration with an international team of engineers and community leads.
     - Design Strategy: Built a high-fidelity MVP across iOS, Android, and Web, translating complex IoT telemetry into a human-centered application.
     - Validation: Used **NASA-TLX** data to prove reduced cognitive load and successfully tested the platform's ability to drive 'Demand Flexibility' habits.
@@ -272,7 +290,7 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "QuestQuill: Generative AI Literacy Platform",
     content: `QuestQuill is a next-generation AI literacy platform transforming reading into immersive, adaptive discovery.
-    - Wicked Problem: Static education models and the 'engagement gap' in traditional literacy programs.
+    - Problem: Static education models and the 'engagement gap' in traditional literacy programs.
     - Human Need: Turning curiosity into mastery through hero-centric adventures and personalized difficulty curves.
     - Technical Bridge: Architected a generative literacy engine using Gemini 2.0 and a real-time data pipeline to map behavioral telemetry to pedagogical insights.
     - Impact: Validated engagement through hero-centric quest loops and automated differentiation for educators.`,
@@ -283,7 +301,7 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "Spectrum AI: Empathetic Autism Support Agent",
     content: `Spectrum AI provides empathetic, evidence-based guidance for parents of newly diagnosed children with autism.
-    - Wicked Problem: The 'Perfect Storm' of information overload and critical support gaps parents face during an initial diagnosis.
+    - Problem: The 'Perfect Storm' of information overload and critical support gaps parents face during an initial diagnosis.
     - Human Need: An empathetic, 24/7 'first responder' that translates complex clinical jargon into actionable early-intervention steps.
     - Technical Bridge: Architected a RAG (Retrieval-Augmented Generation) system using Gemini Pro and ChromaDB to anchor AI responses to a curated knowledge base.
     - Impact: Democratized access to specialized support, reducing the 'time-to-action' during the critical early-intervention window.`,
@@ -294,7 +312,7 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "NetZero: Sustainable Product Discovery & Transparency",
     content: `NetZero is a mobile platform providing instant sustainability transparency through barcode scanning and curated data, designed to solve 'decision fatigue' and skepticism around greenwashing.
-    - Wicked Problem: Modern consumers are paralyzed by a saturated market and misleading 'green' labels. Identification of a 'source of truth' gap between brand claims and consumer values.
+    - Problem: Modern consumers are paralyzed by a saturated market and misleading 'green' labels. Identification of a 'source of truth' gap between brand claims and consumer values.
     - Research & Systems Thinking: Used Mixed-Methods (Surveys for 'Value Pillars' and Think-Aloud sessions) to identify comprehension gaps in sustainability jargon (e.g., ESG, Circular Economy).
     - Design Pivot: Shifted the Information Architecture after testing revealed high interaction cost. Moved the Barcode Scanner from a secondary nav item to the 'Hero' action on the Home Page, significantly reducing 'time-to-task' in retail environments.
     - Behavioral Science: Applied Incentive Salience (linking planet health to personal health), Positive Reinforcement (gamified dopamine hits), and Choice Architecture (Progressive Disclosure of complex ESG data to prevent cognitive overwhelm).
@@ -319,11 +337,11 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "Connect TFI: Social Travel & Urban Safety",
     content: `Connect TFI transforms the utilitarian Transport for Ireland (TFI) app into a secure, social companion to reduce safety barriers.
-    - Wicked Problem: Users reported significant frustration with complexity and a growing sense of insecurity (post-pandemic antisocial behavior).
+    - Problem: Users reported significant frustration with complexity and a growing sense of insecurity (post-pandemic antisocial behavior).
     - Discovery: Mixed-methods research including Empathy Mapping (identifying 'vulnerability hotspots') and Qualitative Interviews to uncover friction points like surveillance inadequacy and coordination friction.
     - Behavioral Science: Built on the 'Social Safety Net' (Social Proof) where users travel in 'digital packs.' Leveraged 'Belonging' via real-time monitoring and reduced 'Interaction Cost' by maintaining visual coherence with the parent app.
     - Methodology: Followed a 'Think-Make-Check' cycle, using NASA-TLX to ensure social features didn't increase the cognitive burden of the already complex interface.
-    - Strategic Impact: Nudged users toward exploration (increasing revenue), improved safety perception, and transformed the app from a 'check and close' tool into a high-engagement social platform.`,
+    - Impact: Nudged users toward exploration (increasing revenue), improved safety perception, and transformed the app from a 'check and close' tool into a high-engagement social platform.`,
     tags: ["Mobility", "Social Design", "Urban Safety", "Behavioral Science", "NASA-TLX", "HCD", "Mixed-Methods"]
   },
   {
@@ -331,10 +349,10 @@ export const brain: KnowledgeNode[] = [
     category: "Project",
     title: "Shape Burst: 3D Interactive Cognitive Engagement",
     content: `Shape Burst is a high-performance 3D interactive system exploring the boundary between generative art and cognitive engagement.
-    - Wicked Problem: The '8-second attention span' and the perceived coldness of complex digital systems.
+    - Problem: The '8-second attention span' and the perceived coldness of complex digital systems.
     - Human Need: Designing rewarding, high-contrast feedback loops that sustain focus and invite intuitive interaction.
     - Technical Bridge: Architected a modular Three.js/WebGL engine with independent classes for particle bursts and constellation lines.
-    - Impact: Optimized for universal touch and performance, identifying strategic applications in cognitive healthcare and marketing 'dwell time.'`,
+    - Impact: Optimized for universal touch and performance, identifying applications in cognitive healthcare and marketing 'dwell time.'`,
     tags: ["Creative Tech", "3D Web", "Cognitive UX", "Three.js", "WebGL"]
   },
 ];

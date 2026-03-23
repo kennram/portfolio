@@ -25,7 +25,7 @@ export const logs: ResearchLog[] = [
     tags: ["HealthTech", "RAG", "Empathetic AI", "HCD"],
     image: "/projects/spectrum-ai.jpg",
     content: `
-## The Wicked Problem: The "Diagnostic Void"
+## The Problem: The "Diagnostic Void"
 When a child is first diagnosed with autism, parents enter a "diagnostic void"—a high-stress period where they are overwhelmed by clinical documentation, long specialist waiting lists, and a total loss of agency. The technical challenge isn't just data retrieval; it's **contextual translation**.
 
 ## The Socio-Technical Solution
@@ -59,10 +59,10 @@ By reducing the "time-to-action" during the critical early-intervention window, 
     tags: ["Behavioral Design", "Wellness", "VR", "Cognitive Architecture"],
     image: "/projects/elysium.jpg",
     content: `
-## The Wicked Problem: Digital Sensory Overload
+## The Problem: Digital Sensory Overload
 Most virtual environments prioritize "retention" through high-frequency stimulation, leading to sensory overload and user fatigue. They fail to provide the cognitive "rest" that modern users desperately need.
 
-## The Strategic Solution: Architectural Pacing
+## The Solution: Architectural Pacing
 In Aqua Aeterna, we replaced traditional "gamified" loops with **Behavioral Cues for Calm**.
 
 ### 1. Luminous Priming
@@ -90,7 +90,7 @@ The ultimate goal of Aqua Aeterna isn't just to stay in the digital world. It is
     tags: ["Climate Action", "VR Narrative", "Empathy Design", "Impact"],
     image: "/projects/lost-voices.jpg",
     content: `
-## The Wicked Problem: The "Data Disconnect"
+## The Problem: The "Data Disconnect"
 Climate change is often presented as a series of abstract percentages and melting glacier photos. This "data distance" creates a psychological numbness—people see the numbers but don't feel the weight of the loss.
 
 ## The Strategic Solution: Visceral Immersion
@@ -121,7 +121,7 @@ By shoving the user's face into the "stink of the dying fish" and the silence of
     tags: ["Systems Thinking", "Organizational Design", "Digital Transformation"],
     image: "/projects/ooda.jpg",
     content: `
-## The Wicked Problem: Technical Tunnel Vision
+## The Problem: Technical Tunnel Vision
 Most digital transformations fail because they treat "Technical" and "Social" systems as separate entities. When we optimize only for technical efficiency, we often create "Social Friction"—resistance, misalignment, and ultimately, system abandonment.
 
 ## The Hexagon Model: A Unified Architecture

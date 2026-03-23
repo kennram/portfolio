@@ -447,7 +447,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
           <div className="space-y-6 text-center md:text-left">
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[0.9]">
-              Have a Wicked <br /> Problem?
+              Have a complex <br /> problem?
             </h2>
             <p className="text-xl text-teal-100/60 font-light max-w-md">
               I specialize in building bridges where technical complexity meets human need. Let&apos;s build yours.

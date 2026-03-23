@@ -1,17 +1,34 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { useChat } from "ai/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Sparkles, Plus } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/utils";
+import { projects } from "@/data/projects";
 
-export const AssistantWidget = () => {
+interface AssistantWidgetProps {
+  projectId?: string;
+}
+
+export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNudge, setShowNudge] = useState(false);
   const { messages, input, handleInputChange, handleSubmit, isLoading, append, setInput } = useChat();
   const scrollRef = useRef<HTMLDivElement>(null);
+  
+  // Rotating hints logic
+  const [currentHintIndex, setCurrentHintIndex] = useState(0);
+  const allHints = useMemo(() => projects.map(p => ({ id: p.id, hint: p.hint })), []);
+  
+  const currentHint = useMemo(() => {
+    if (projectId) {
+      const project = projects.find(p => p.id === projectId);
+      return project ? project.hint : allHints[0].hint;
+    }
+    return allHints[currentHintIndex].hint;
+  }, [projectId, currentHintIndex, allHints]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -29,13 +46,41 @@ export const AssistantWidget = () => {
     return () => clearTimeout(timer);
   }, [isOpen, messages.length]);
 
-  const quickTaps = [
-    "How do you solve 'Wicked Problems'?",
-    "Show me your latest research logs.",
-    "Explain the 3E's Design Framework.",
-    "What is 'Neuro-architecture'?",
-    "Tell me about your €2M IoT project."
-  ];
+  // Rotate hints every 15 seconds if on main page
+  useEffect(() => {
+    if (projectId) return;
+    
+    const interval = setInterval(() => {
+      setCurrentHintIndex((prev) => (prev + 1) % allHints.length);
+    }, 15000);
+    
+    return () => clearInterval(interval);
+  }, [projectId, allHints.length]);
+
+  const quickTaps = useMemo(() => {
+    const baseTaps = [
+      "How do you approach complex problems?",
+      "Explain the 3E's Design Framework.",
+      "What is 'Neuro-architecture'?"
+    ];
+
+    if (projectId) {
+      const project = projects.find(p => p.id === projectId);
+      if (project) {
+        return [
+          `Tell me about ${project.title}`,
+          `What was the key challenge in ${project.title}?`,
+          ...baseTaps
+        ];
+      }
+    }
+
+    return [
+      "Show me your latest research logs.",
+      "Tell me about the €2M IoT project.",
+      ...baseTaps
+    ];
+  }, [projectId]);
 
   const handleQuickTap = (tap: string) => {
     setShowNudge(false);
@@ -44,6 +89,7 @@ export const AssistantWidget = () => {
     } else {
       setInput(tap);
     }
+    setIsOpen(true);
   };
 
   const toggleChat = () => {
@@ -54,14 +100,15 @@ export const AssistantWidget = () => {
   return (
     <div className="fixed bottom-8 right-8 z-[100] flex flex-col items-end gap-4">
       {/* Active Engagement Nudge */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showNudge && !isOpen && (
           <motion.div
+            key={currentHint}
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            onClick={() => setIsOpen(true)}
-            className="bg-white text-black px-6 py-4 rounded-2xl rounded-br-none shadow-2xl cursor-pointer border border-white/20 relative group"
+            onClick={() => handleQuickTap(currentHint)}
+            className="bg-white text-black px-6 py-4 rounded-2xl rounded-br-none shadow-2xl cursor-pointer border border-white/20 relative group max-w-[280px]"
           >
             <button 
               onClick={(e) => { e.stopPropagation(); setShowNudge(false); }}
@@ -71,10 +118,9 @@ export const AssistantWidget = () => {
               <X className="w-4 h-4" />
             </button>
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-teal-500 animate-pulse shrink-0" />
               <p className="text-xs font-bold uppercase tracking-widest leading-tight">
-                Curious how I secured <br /> 
-                <span className="text-teal-600">€2M for RENEW?</span>
+                {currentHint.split('?')[0]}?
               </p>
             </div>
           </motion.div>
@@ -137,7 +183,7 @@ export const AssistantWidget = () => {
                         )
                       }}
                     >
-                      {`Welcome. I am the Digital Twin of Kenn Davis—Socio-Technical Architect and HCD Specialist. From securing €2M in IoT funding to building global partnerships with IBM, my work is driven by the 3E’s: Empathy, Efficiency, and Engagement.\n\nHow can I assist with your project or team goals? [Schedule a discovery call](https://calendly.com/kenndavisux/30min) or reach me via email at [kenndavisux@gmail.com](mailto:kenndavisux@gmail.com).`}
+                      {`Welcome. I am the Digital Twin of Kenn Davis—Socio-Technical Architect and HCD Specialist. From helping secure €2M in IoT funding to building global partnerships with IBM, my work is driven by the 3E’s: Empathy, Efficiency, and Engagement.\n\nHow can I assist with your project or team goals? [Schedule a discovery call](https://calendly.com/kenndavisux/30min) or reach me via email at [kenndavisux@gmail.com](mailto:kenndavisux@gmail.com).`}
                     </ReactMarkdown>
                   </div>
                 </div>
