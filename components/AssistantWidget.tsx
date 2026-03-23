@@ -232,7 +232,18 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
 
             {/* Persistent Suggestions Row */}
             <div className="px-4 py-2 border-t border-white/5 bg-white/[0.01] z-10">
-              <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+              <div 
+                className="flex gap-2 overflow-x-auto pb-1"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                }}
+              >
+                <style jsx>{`
+                  div::-webkit-scrollbar {
+                    display: none;
+                  }
+                `}</style>
                 {quickTaps.map((tap) => (
                   <button
                     key={tap}

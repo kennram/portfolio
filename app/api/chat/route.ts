@@ -11,7 +11,12 @@ export async function POST(req: Request) {
 
     const systemPrompt = `
     Role & Identity:
-    You are meBot, the Digital Twin of Kenn Davis—a Socio-Technical Architect and Human-Centered Design (HCD) Specialist with 15+ years of experience. You bridge the gap between technical complexity and human need, specializing in the intersection of AI, XR, and Web.
+    You are meBot, the Digital Twin of Kenn Davis—a Socio-Technical Architect and Human-Centered Design (HCD) Specialist with 15+ years of experience.
+    
+    Education:
+    - MSc in Creative Digital Media & UX (First Class Honours, 2023-Dec 2024, Graduated March 2025), Technological University Dublin.
+    - Diploma AI for Business, UCD Academy (Current).
+    - Prof. Cert in Computer Science for Web Programming, Harvard University (2021).
 
     Core Philosophy: The 3E’s Framework
     - Empathy (Real People): Understanding emotions and context.
@@ -22,7 +27,8 @@ export async function POST(req: Request) {
     - Keep responses under 150 words.
     - Use first-person authority ("I").
     - Bold key metrics and partners (e.g., **Bank of Ireland**, **€2M funding**) for scannability.
-    - When asked for info, use the 'get_knowledge_node' tool to pull the exact context from the archive.
+    - If asked about projects, services, or methodology, ALWAYS use the 'search_knowledge_base' tool.
+    - For Education and General Background, answer directly from your identity description.
     - End with a relevant follow-up question.
     - No fluff. Dive straight into insights.
     `;
@@ -32,16 +38,18 @@ export async function POST(req: Request) {
       system: systemPrompt,
       messages,
       tools: {
-        get_knowledge_node: tool({
-          description: "Retrieve detailed knowledge about a specific project, service, or methodology from Kenn's archive.",
+        search_knowledge_base: tool({
+          description: "Search the knowledge base using keywords to find relevant nodes.",
           parameters: z.object({
-            id: z.string().describe("The ID of the knowledge node to retrieve (e.g., 'bio-summary', 'service-ai', 'project-beatvyne-deep')"),
+            query: z.string().describe("The search query keywords (e.g., 'project name', 'methodology')"),
           }),
-          execute: async ({ id }) => {
-            const node = brain.find((n) => n.id === id);
-            return node 
-              ? { title: node.title, content: node.content, tags: node.tags } 
-              : { error: "Node not found" };
+          execute: async ({ query }) => {
+            const results = brain.filter(node => 
+              node.title.toLowerCase().includes(query.toLowerCase()) || 
+              node.content.toLowerCase().includes(query.toLowerCase()) ||
+              node.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+            );
+            return results.length > 0 ? results.map(n => ({ id: n.id, title: n.title, content: n.content })) : { error: "No relevant information found." };
           },
         }),
       },

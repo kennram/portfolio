@@ -110,12 +110,12 @@ export const brain: KnowledgeNode[] = [
     category: "Biography",
     title: "Academic Foundation & Advanced Training",
     content: `My academic background bridges creative media, technical engineering, and business strategy:
-    - MSc in Creative Digital Media & UX (First Class Honours), Technological University Dublin (2025). Focus: Behavioral Change, User Research, Service Design, and Systems Thinking.
+    - MSc in Creative Digital Media & UX (First Class Honours, Graduated March 2025, 2023–Dec 2024), Technological University Dublin. Focus: Behavioral Change, User Research, Service Design, and Systems Thinking.
     - Diploma AI for Business, UCD Academy (Current).
     - Prof. Cert in Computer Science for Web Programming, Harvard University via edX (2021).
     - Post Grad Cert in Innovation & New Business Development, Dublin City University (2014).
     - Specialized AI Training: Google Advanced Gen AI (2025), ChatGPT Prompt Engineering for Developers (DeepLearning.AI, 2024), and AI & Creative Tech (Oxford Summer School, 2024).`,
-    tags: ["Education", "MSc", "AI", "Harvard", "UCD", "TUDublin", "DCU"]
+    tags: ["Education", "MSc", "AI", "Harvard", "UCD", "TUDublin", "DCU", "Masters"]
   },
   {
     id: "technical-stack",
