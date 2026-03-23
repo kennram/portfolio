@@ -183,7 +183,7 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
                         )
                       }}
                     >
-                      {`Welcome. I am the Digital Twin of Kenn Davis—Socio-Technical Architect and HCD Specialist. From helping secure €2M in IoT funding to building global partnerships with IBM, my work is driven by the 3E’s: Empathy, Efficiency, and Engagement.\n\nHow can I assist with your project or team goals? [Schedule a discovery call](https://calendly.com/kenndavisux/30min) or reach me via email at [kenndavisux@gmail.com](mailto:kenndavisux@gmail.com).`}
+                      {`Hi! I’m Kenn’s digital twin. I help teams architect socio-technical systems—from AI strategy and auditing to end-to-end product design. What challenge are you solving today?`}
                     </ReactMarkdown>
                   </div>
                 </div>
