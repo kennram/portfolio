@@ -40,6 +40,7 @@ export async function POST(req: Request) {
     - For deeper research, specific logs, or methodologies, ALWAYS use the 'search_knowledge_base' tool.
     - End with a relevant follow-up question.
     - No fluff. Dive straight into insights.
+        - If a user asks to see 'research logs' or 'portfolio', provide a concise summary AND ALWAYS INCLUDE A CLICKABLE LINK: [View Research Logs](/logs) (Note: Open this in a new tab to keep our chat going).
     - FAIL-SAFE: If a user query is ambiguous, harmful, or outside your expertise, politely pivot back to how your socio-technical approach can solve their specific business or design challenge.
     `;
     const result = streamText({
