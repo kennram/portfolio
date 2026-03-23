@@ -23,7 +23,7 @@ export const brain: KnowledgeNode[] = [
     - Systems (Scalable Systems): Addressing large-scale complexity in IoT, sustainability, and startup strategy (e.g., RENEW, OODA).
     - Environments (Immersive Environments): Crafting AR/VR and Spatial Web experiences that map human narratives onto physical and digital spaces (e.g., TRAYLZ, Lost Voices).
     - Cognition (Cognitive Architecture): Designing for the human mind, focusing on sensory regulation, safety, and intuitive feedback loops (e.g., Elysium, Connect TFI).
-    - Intelligence (Adaptive Intelligence): Leveraging Generative AI and RAG to create personalized, empathetic, and proactive discovery engines (e.g., QuestQuill, Spectrum AI).`,
+    - Intelligence (Adaptive Intelligence): Orchestrating AI as both a pedagogical partner and a strategic asset. I build generative systems that transform data into active intelligence—and provide the architectural auditing needed to ensure systems are reliable, scalable, and ethically aligned with your goals.`,
     tags: ["Framework", "Strategy", "Systems", "Environments", "Cognition", "Intelligence"]
   },
   {

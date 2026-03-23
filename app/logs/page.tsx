@@ -6,12 +6,32 @@ import { AssistantWidget } from "@/components/AssistantWidget";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Terminal, Cpu, Database, Activity } from "lucide-react";
+import { ArrowRight, Terminal, Cpu, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { InfoTooltip } from "@/components/InfoTooltip";
 
 export default function LogsPage() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const getStatusDefinition = (status: string) => {
+    switch (status) {
+      case "DECRYPTED": return "Research synthesized and converted from raw data into actionable strategic intelligence.";
+      case "LIVE_FEED": return "Active research stream. These projects are currently evolving and open for collaboration.";
+      case "ARCHIVED": return "Completed study. Foundational methodologies successfully integrated into the 3E's Framework.";
+      default: return "Research project status lifecycle.";
+    }
+  };
+
+  const getCognitiveLoadDefinition = (load: string) => {
+    switch (load) {
+      case "Low: Narrative": return "Exploratory, storytelling-driven content focused on human-centric case studies.";
+      case "Medium: Strategic": return "Dense synthesis of organizational systems, business frameworks, and design methodology.";
+      case "High: Architectural": return "Advanced architectural deep dives into AI pipelines, XR engines, and socio-technical modeling.";
+      default: return "Research density and cognitive complexity level.";
+    }
+  };
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -101,13 +121,15 @@ export default function LogsPage() {
                       <span className="text-muted-foreground/40 hidden md:inline">|</span>
                       <span className="px-3 py-1 rounded-full bg-white/5 text-muted-foreground">{log.category}</span>
                       <span className="text-muted-foreground/40 hidden md:inline">|</span>
-                      <span className={cn(
-                        "flex items-center gap-1.5",
-                        log.cognitiveLoad.includes("High") ? "text-rose-500" : "text-amber-500"
-                      )}>
-                        <Activity className="w-3 h-3" />
-                        {log.cognitiveLoad}
-                      </span>
+                      <InfoTooltip content={getCognitiveLoadDefinition(log.cognitiveLoad)}>
+                        <span className={cn(
+                          "flex items-center gap-1.5 cursor-help hover:text-white transition-colors",
+                          log.cognitiveLoad.includes("High") ? "text-rose-500" : log.cognitiveLoad.includes("Medium") ? "text-amber-500" : "text-teal-500"
+                        )}>
+                          <Activity className="w-3 h-3" />
+                          {log.cognitiveLoad}
+                        </span>
+                      </InfoTooltip>
                     </div>
 
                     <h2 className="text-2xl md:text-4xl font-bold tracking-tight group-hover:text-teal-400 transition-colors">
@@ -120,17 +142,21 @@ export default function LogsPage() {
                   </div>
 
                   {/* Status & Action */}
-                  <div className="flex items-center gap-8 relative z-10">
-                    <div className="hidden lg:flex flex-col items-end text-right space-y-2">
+                  <div className="flex items-center justify-between lg:justify-end gap-8 relative z-10 w-full lg:w-auto">
+                    <div className="flex flex-col items-start lg:items-end text-left lg:text-right space-y-1">
                        <div className="flex items-center gap-2">
                          <span className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground">Status</span>
-                         <span className="px-2 py-0.5 rounded bg-teal-500/10 text-teal-500 text-[9px] font-mono">{log.status}</span>
+                         <InfoTooltip content={getStatusDefinition(log.status)}>
+                           <span className="px-2 py-0.5 rounded bg-teal-500/10 text-teal-500 text-[9px] font-mono cursor-help">
+                             {log.status}
+                           </span>
+                         </InfoTooltip>
                        </div>
                        <div className="text-[10px] uppercase tracking-widest text-muted-foreground/40 font-mono">
                          Indexed: {log.date}
                        </div>
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-teal-500 group-hover:border-teal-500 transition-all">
+                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-teal-500 group-hover:border-teal-500 transition-all flex-shrink-0">
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>

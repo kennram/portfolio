@@ -252,16 +252,17 @@ export default function Home() {
         
         <div className="max-w-6xl mx-auto relative z-10">
           <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-16 text-center opacity-50 font-bold">
-            Selected Collaborators & Strategic Partners
+            Strategic Partners
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-12 md:gap-x-20">
             {[
-              "IBM", 
-              "Dublin City Council", 
+              "Bank of Ireland", 
+              "Culture Night", 
               "Dublin Tech Summit", 
-              "Jameson Whiskey", 
-              "Amazon", 
-              "Sony Music"
+              "Getty Images", 
+              "Failte Ireland", 
+              "Windmill Lane Recording Studios",
+              "Landmrk"
             ].map((partner) => (
               <motion.span 
                 key={partner}
@@ -373,13 +374,13 @@ export default function Home() {
             <h2 className="text-[clamp(2.5rem,10vw,4.5rem)] font-bold tracking-tighter uppercase text-center md:text-left">Strategic Expertise</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* AI Automation UX */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* AI Automation UX (Teal Semantic - Strategy/Audit) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-teal-500/30 transition-all group relative overflow-hidden"
+              className="p-10 rounded-[2.5rem] bg-teal-500/[0.03] border border-teal-500/20 hover:border-teal-500/50 transition-all group relative overflow-hidden"
             >
               <div className="relative z-10 space-y-6">
                 <div className="w-14 h-14 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
@@ -387,53 +388,53 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold tracking-tight uppercase">AI Automation UX</h3>
                 <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-                  <li className="flex items-center gap-2 italic font-light">• Intuitive Digital Agents</li>
-                  <li className="flex items-center gap-2 italic font-light">• Personality-Driven Loops</li>
-                  <li className="flex items-center gap-2 italic font-light">• One-Click Workflows</li>
+                  <li className="flex items-center gap-2 italic font-light">• AI Readiness Audits</li>
+                  <li className="flex items-center gap-2 italic font-light">• Workflow Orchestration</li>
+                  <li className="flex items-center gap-2 italic font-light">• Ethical AI Governance</li>
                 </ul>
               </div>
               <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-teal-500/5 blur-3xl group-hover:bg-teal-500/10 transition-colors" />
             </motion.div>
 
-            {/* XR UX (Spatial) */}
+            {/* XR UX (Spatial) (Blue Semantic - Build/Engineering) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-accent/30 transition-all group relative overflow-hidden"
+              className="p-10 rounded-[2.5rem] bg-blue-500/[0.03] border border-blue-500/20 hover:border-blue-500/50 transition-all group relative overflow-hidden"
             >
               <div className="relative z-10 space-y-6">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <Target className="w-7 h-7 text-accent" />
+                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <Target className="w-7 h-7 text-blue-500" />
                 </div>
-                <h3 className="text-2xl font-bold tracking-tight uppercase">XR & Spatial UX</h3>
+                <h3 className="text-2xl font-bold tracking-tight uppercase">Spatial Architecture & XR</h3>
                 <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-                  <li className="flex items-center gap-2 italic font-light">• Immersive Narrative Design</li>
-                  <li className="flex items-center gap-2 italic font-light">• Spatial Audio Landscapes</li>
-                  <li className="flex items-center gap-2 italic font-light">• Adaptive Comfort Control</li>
+                  <li className="flex items-center gap-2 italic font-light">• 3D Environment Architecture</li>
+                  <li className="flex items-center gap-2 italic font-light">• Spatial Interaction Engines</li>
+                  <li className="flex items-center gap-2 italic font-light">• High-Fidelity Performance</li>
                 </ul>
               </div>
-              <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-accent/5 blur-3xl group-hover:bg-accent/10 transition-colors" />
+              <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-blue-500/5 blur-3xl group-hover:bg-blue-500/10 transition-colors" />
             </motion.div>
 
-            {/* Web & App UX */}
+            {/* Web & App UX (Purple Semantic - Design/Architecture) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-purple-500/30 transition-all group relative overflow-hidden"
+              className="p-10 rounded-[2.5rem] bg-purple-500/[0.03] border border-purple-500/20 hover:border-purple-500/50 transition-all group relative overflow-hidden"
             >
               <div className="relative z-10 space-y-6">
                 <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                   <Sparkles className="w-7 h-7 text-purple-500" />
                 </div>
-                <h3 className="text-2xl font-bold tracking-tight uppercase">Full-Stack Design</h3>
+                <h3 className="text-2xl font-bold tracking-tight uppercase">Full-Stack Architecture</h3>
                 <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-                  <li className="flex items-center gap-2 italic font-light">• High-Fidelity Concepts</li>
-                  <li className="flex items-center gap-2 italic font-light">• Technical Bridge Scaffolds</li>
-                  <li className="flex items-center gap-2 italic font-light">• Cohesive Digital Branding</li>
+                  <li className="flex items-center gap-2 italic font-light">• End-to-End Product Design</li>
+                  <li className="flex items-center gap-2 italic font-light">• Scalable System Engineering</li>
+                  <li className="flex items-center gap-2 italic font-light">• Enterprise-Grade Web Apps</li>
                 </ul>
               </div>
               <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-purple-500/5 blur-3xl group-hover:bg-purple-500/10 transition-colors" />

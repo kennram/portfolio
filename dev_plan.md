@@ -37,6 +37,12 @@
 - [x] **Responsiveness:** Final pass for rigorous testing across niche mobile/tablet resolutions.
 - [x] **Vercel Deployment:** Configure environment variables and production build for final launch.
 
+## Phase 6: Research Log Management System (In-Progress)
+- [ ] Phase 1: Database Setup (Supabase/PostgreSQL) and Authentication (NextAuth/Clerk).
+- [ ] Phase 2: Create Private Dashboard for Log Creation/Management (CRUD).
+- [ ] Phase 3: Implement Rich Text Editor (TipTap) and Media/Asset Uploads.
+- [ ] Phase 4: Data Migration (from `data/logs.ts` to Database).
+
 
 Strategy options for enhanced meBot
   Option 1: The "Context Window" Approach (Simplest & Fast)
