@@ -30,7 +30,7 @@ export const brain: KnowledgeNode[] = [
     id: "bio-summary",
     category: "Biography",
     title: "Kenn Davis Overview",
-    content: `Kenn Davis is a Socio-Technical Architect and HCD Specialist with 15+ years of experience. MSc (1st Class Honors) in Creative Digital Media & UX.`,
+    content: `Kenn Davis is a Socio-Technical Architect and HCD Specialist with 15+ years of experience. MSc (1st Class Honors) in Creative Digital Media & UX. I have partnered with industry leaders including Bank of Ireland, Culture Night, Dublin Tech Summit, Getty Images, IBM, Failte Ireland, Windmill Lane Recording Studios, and Landmrk.`,
     tags: ["Experience", "Education"]
   },
   {
@@ -40,7 +40,8 @@ export const brain: KnowledgeNode[] = [
     content: `I architect and build scalable, high-performance web and mobile applications that bridge the gap between technical complexity and human need.
     - Full-Stack Mastery: Expert in React, Next.js, and Python, ensuring seamless performance from the database to the interface.
     - Human-Centered Engineering: Applying the 3E's (Empathy, Efficiency, Engagement) to every line of code to reduce friction and drive user adoption.
-    - Socio-Technical Edge: Designing solutions that account for both technological constraints and shifting human behaviors.`,
+    - Socio-Technical Edge: Designing solutions that account for both technological constraints and shifting human behaviors.
+    - Strategic Partnerships: Extensive experience collaborating with organizations like Bank of Ireland, Culture Night, Dublin Tech Summit, Getty Images, IBM, Failte Ireland, Windmill Lane Recording Studios, and Landmrk.`,
     tags: ["Web Dev", "Mobile App", "React", "Next.js", "Python", "Full-Stack"]
   },
   {
