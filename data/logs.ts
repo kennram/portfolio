@@ -180,7 +180,7 @@ This isn't just about a mask; it's about the unstoppable surge of rapid creation
 ## Impact on the Creative Industry: Democratizing Innovation
 The impact on the creative industry is nothing short of revolutionary. We're witnessing the democratization of creation unfold before our eyes. No longer is the power to build incredible digital worlds confined to a select few with decades of specialized training. Now, artists, dreamers, and innovators from all walks of life can pick up these powerful, intuitive tools and bring their visions to life. This sparks a vibrant explosion of diverse voices and fresh perspectives, pushing the boundaries of what's possible in digital art, gaming, film, and beyond, especially within the burgeoning field of XR technologies. Production cycles are no longer measured in months, but in days, even hours, allowing for unprecedented agility and responsiveness to the ever-evolving desires of audiences.
 
-<img src="/projects/mask4.jpg" alt="Description" class="my-8 rounded-2xl border
+<img src="/projects/mask7.jpg" alt="Description" class="my-8 rounded-2xl border
      border-white/10 w-full" />
 
 
@@ -188,15 +188,15 @@ The impact on the creative industry is nothing short of revolutionary. We're wit
 ## Skills for a New Frontier: Adapting to the AI-Powered Landscape
 And what does this mean for learning and skills development? It's a seismic shift. The old rigid pathways of specialized training are giving way to a more fluid, adaptive landscape. We're moving from a world where we had to master every technical step to one where our human ingenuity is elevated. The new frontier demands skills in:
 
-<b>Conceptualization and Vision:</b> Conceptualization and Vision: AI can generate, but it needs a guiding hand, a creative spark. Our ability to imagine, to articulate, and to curate the output of these powerful tools becomes paramount.
+<b><strong>Conceptualization and Vision:</b> Conceptualization and Vision: AI can generate, but it needs a guiding hand, a creative spark. Our ability to imagine, to articulate, and to curate the output of these powerful tools becomes paramount.
 
 <b>Interdisciplinary Fluency:</b> The journey of my mask, from photo to AI, to Tripo, to Blender, to Unity, highlights the need for a holistic understanding of the creative pipeline for XR experiences and spatial computing. Knowing how different tools interact and complement each other is key.
 
 <b>Rapid Prototyping:</b> The speed of creation fosters a culture of experimentation. Failing fast, learning quicker, and constantly refining becomes the new rhythm of progress.
 
-<b>Higher-Level Problem Solving:</b> When the grunt work is handled by AI, our cognitive energy can be directed towards more complex challenges, pushing the boundaries of design and interaction within spatial computing environments.
+<b>Higher-Level Problem Solving:</b>  When the grunt work is handled by AI, our cognitive energy can be directed towards more complex challenges, pushing the boundaries of design and interaction within spatial computing environments.
 
-This isn't about technology replacing human skill; it's about technology amplifying human potential. It's about empowering us to reach further, to create bolder, and to express ourselves in ways previously unimagined. 
+This isn't about technology replacing human skill; it's about technology amplifying human potential. It's about empowering us to reach further, to create bolder, and to express ourselves in ways previously unimagined.
 
 <img src="/projects/mask6.jpg" alt="Description" class="my-8 rounded-2xl border
      border-white/10 w-full" />
