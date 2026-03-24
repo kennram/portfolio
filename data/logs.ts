@@ -147,7 +147,7 @@ Earning a high first-class grade of 86%, this research paper is an example of th
     readTime: "7 min",
     status: "LIVE_FEED",
     tags: ["AI", "Spatial Computing", "Creative Workflow", "XR"],
-    images: ["/projects/mask1.jpg", "/projects/mask2.jpg", "/projects/mask3.jpg", "/projects/mask4.jpg"],
+    images: ["/projects/mask1.jpg", "/projects/mask2.jpg", "/projects/mask7.jpg", "/projects/mask8.jpg"],
     content: `
 ## My Mask, My World: How AI is Resurrecting Digital Experiences
 The hum of innovation is growing louder, isn't it? It's a symphony composed of artificial intelligence and immersive technology, and it's playing a tune that's utterly transforming our world. Forget what the cynics whisper about the metaverse being dead – because I just danced in it, wearing a piece of my own reality, and let me tell you, it's more alive than ever.
@@ -198,7 +198,7 @@ And what does this mean for learning and skills development? It's a seismic shif
 
 This isn't about technology replacing human skill; it's about technology amplifying human potential. It's about empowering us to reach further, to create bolder, and to express ourselves in ways previously unimagined.
 
-<img src="/projects/mask6.jpg" alt="Description" class="my-8 rounded-2xl border
+<img src="/projects/mask8.jpg" alt="Description" class="my-8 rounded-2xl border
      border-white/10 w-full" />
 
 ## The Living, Breathing World of Spatial Computing
