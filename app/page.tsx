@@ -3,9 +3,11 @@
 import { Header } from "@/components/Header";
 import { BentoGrid } from "@/components/BentoGrid";
 import { AssistantWidget } from "@/components/AssistantWidget";
+import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { Target, Zap, Heart, Sparkles } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const pillars = ["Systems", "Environments", "Cognition", "Intelligence"] as const;
@@ -448,31 +450,20 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
           <div className="space-y-6 text-center md:text-left">
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[0.9]">
-              Have a complex <br /> problem?
+              Ready for a <br /> new direction?
             </h2>
             <p className="text-xl text-teal-100/60 font-light max-w-md">
-              I specialize in building bridges where technical complexity meets human need. Let&apos;s build yours.
+              Most digital experiences are misaligned with human needs. I bridge that gap using the 3E’s Framework. Let’s audit your infrastructure and uncover hidden growth opportunities.
             </p>
           </div>
-          <div className="flex flex-col gap-4">
-            <motion.a 
-              href="https://calendly.com/kenndavisux/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-12 py-6 bg-teal-500 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-teal-400 transition-colors shadow-2xl block text-center"
+          
+          <div className="flex flex-col gap-6 w-full max-w-md">
+            <Link 
+              href="/audit"
+              className="px-12 py-6 bg-teal-500 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-teal-400 transition-all shadow-2xl block text-center"
             >
-              Book Discovery Call
-            </motion.a>
-            <motion.a 
-              href="mailto:kenndavisux@gmail.com" 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-12 py-6 bg-white/10 border border-white/20 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-white/20 transition-colors shadow-2xl block text-center"
-            >
-              Send an Email
-            </motion.a>
+              Request Strategic Audit
+            </Link>
           </div>
         </div>
       </section>
