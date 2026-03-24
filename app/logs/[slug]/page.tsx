@@ -1,258 +1,38 @@
-"use client";
-
 import { logs } from "@/data/logs";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/Header";
-import { AssistantWidget } from "@/components/AssistantWidget";
-import { DownloadButton } from "@/components/DownloadButton";
-import { 
-  ArrowLeft, 
-  Clock, 
-  Calendar, 
-  Tag, 
-  Activity,
-  Cpu,
-  ShieldAlert,
-  Fingerprint,
-  ChevronLeft,
-  ChevronRight
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { motion, Variants, AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
+import LogDetailPageClient from "./page.client";
+import type { Metadata } from "next";
 
-const ImageCarousel = ({ images, title }: { images: string[], title: string }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
+  const log = logs.find((l) => l.id === resolvedParams.slug);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  return {
+    title: log?.title || "Research Log",
+    description: log?.summary || "Strategic research and intelligence by Kenn Davis.",
+    openGraph: {
+      title: log?.title,
+      description: log?.summary,
+      images: log?.images ? [log.images[0]] : [],
+    },
+  };
+}
 
-  return (
-    <div className="w-full h-[50vh] md:h-[65vh] relative overflow-hidden bg-black/20">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={images[currentIndex]}
-            alt={`${title} - image ${currentIndex + 1}`}
-            fill
-            priority
-            className="object-cover opacity-80 grayscale-[0.25]"
-          />
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/0 via-[#141414]/40 to-[#141414]" />
-
-      {images.length > 1 && (
-        <>
-          <button onClick={prev} className="absolute left-6 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-colors z-20">
-            <ChevronLeft className="w-6 h-6 text-white" />
-          </button>
-          <button onClick={next} className="absolute right-6 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-colors z-20">
-            <ChevronRight className="w-6 h-6 text-white" />
-          </button>
-          <div className="absolute bottom-8 right-12 flex gap-2 z-20">
-            {images.map((_, idx) => (
-              <div 
-                key={idx} 
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all",
-                  idx === currentIndex ? "bg-teal-500 w-6" : "bg-white/30"
-                )} 
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-};
-
-export default function LogDetailPage({
+export default async function LogDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const resolvedParams = React.use(params);
+  const resolvedParams = await params;
   const log = logs.find((l) => l.id === resolvedParams.slug);
-
-  // Force scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [resolvedParams.slug]);
 
   if (!log) {
     notFound();
   }
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] as const } }
-  };
-
-  return (
-    <main className="relative z-10 min-h-screen text-foreground selection:bg-teal-500/30">
-      <Header />
-      
-      {/* Dynamic Hero Section */}
-      {log.images && log.images.length > 0 && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-        >
-          <ImageCarousel images={log.images} title={log.title} />
-        </motion.div>
-      )}
-
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className={cn(
-          "max-w-4xl mx-auto px-6 md:px-12 pb-32",
-          log.images && log.images.length > 0 ? "pt-12 md:pt-24" : "pt-48"
-        )}
-      >
-        {/* Back Button */}
-        <motion.div variants={itemVariants}>
-          <Link 
-            href="/logs" 
-            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground hover:text-teal-500 transition-colors mb-12 group"
-          >
-            <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
-            Back to Archive
-          </Link>
-        </motion.div>
-
-        {/* Log Header */}
-        <div className="mb-24 space-y-8">
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center text-[10px] font-bold uppercase tracking-widest text-teal-500">
-            <span className="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20">{log.category}</span>
-            <span className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="w-3 h-3" /> {log.date}
-            </span>
-            <span className="flex items-center gap-2 text-muted-foreground">
-              <Clock className="w-3 h-3" /> {log.readTime}
-            </span>
-          </motion.div>
-          
-          <motion.h1 variants={itemVariants} className="text-[clamp(2rem,10vw,4rem)] md:text-[clamp(3rem,8vw,7rem)] font-bold tracking-tighter leading-[0.9]">
-            {log.title}
-          </motion.h1>
-
-          <motion.p variants={itemVariants} className="text-2xl text-muted-foreground font-light leading-relaxed italic border-l-2 border-teal-500/30 pl-8">
-            {log.summary}
-          </motion.p>
-          
-          {/* Download Paper Button (Only for relevant logs) */}
-          {log.id === "xr-business-society" && (
-            <motion.div variants={itemVariants}>
-              <DownloadButton href="/downloads/Research_Paper.pdf" />
-            </motion.div>
-          )}
-        </div>
-
-        {/* Content Body */}
-        <motion.article variants={itemVariants} className="max-w-none">
-          <div className="space-y-12 text-lg text-foreground/80 leading-relaxed font-light">
-             {/* We simulate a basic markdown rendering for now */}
-             {log.content.split('##').map((section, idx) => {
-               if (!section.trim()) return null;
-               const [title, ...contentLines] = section.split('\n');
-               return (
-                 <div key={idx} className="space-y-6">
-                   <h2 className="text-3xl font-bold tracking-tight text-white mt-16 first:mt-0 flex items-center gap-4">
-                     <div className="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center border border-teal-500/20">
-                        <Cpu className="w-4 h-4 text-teal-500" />
-                     </div>
-                     {title.trim()}
-                   </h2>
-                   <div 
-                     className="whitespace-pre-line"
-                     dangerouslySetInnerHTML={{ __html: contentLines.join('\n').trim() }} 
-                   />
-                 </div>
-               );
-             })}
-          </div>
-        </motion.article>
-
-        {/* Strategic Metadata Footer */}
-        <motion.section 
-          variants={itemVariants}
-          className="mt-32 p-12 rounded-[2.5rem] bg-[#141414] border border-white/5 relative overflow-hidden"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 text-rose-500">
-                <Activity className="w-4 h-4" />
-                <span className="text-[10px] uppercase tracking-widest font-bold">System Load Analysis</span>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                This log represents a **{log.cognitiveLoad}** session. The intelligence gathered here informs current project architectures and socio-technical strategy.
-              </p>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 text-teal-500">
-                <Tag className="w-4 h-4" />
-                <span className="text-[10px] uppercase tracking-widest font-bold">Encapsulated Tags</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {log.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 rounded-lg bg-white/5 text-[11px] font-mono text-muted-foreground">
-                    #{tag.toLowerCase()}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Decorative Security Icons */}
-          <div className="absolute top-8 right-8 flex gap-4 opacity-[0.05]">
-            <ShieldAlert className="w-12 h-12" />
-            <Fingerprint className="w-12 h-12" />
-          </div>
-        </motion.section>
-
-        {/* Pagination / CTA */}
-        <motion.div variants={itemVariants} className="mt-24 flex justify-center">
-           <Link 
-            href="/logs"
-            className="px-12 py-6 bg-white text-black rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-teal-500 hover:text-white transition-all shadow-2xl"
-           >
-            Return to Ledger
-           </Link>
-        </motion.div>
-      </motion.div>
-
-      <AssistantWidget />
-
-      {/* Footer */}
-      <footer className="px-8 md:px-12 py-16 border-t border-white/5 text-[10px] uppercase tracking-[0.5em] text-muted-foreground/40 text-center font-bold">
-        © 2026 KENN DAVIS. PRIVATE STRATEGIC ARCHIVE.
-      </footer>
-    </main>
-  );
+  return <LogDetailPageClient log={log} />;
 }
