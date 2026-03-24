@@ -102,10 +102,10 @@ export default function LogsPage() {
                     : "bg-white/[0.02] border-white/5"
                 )}>
                   {/* Image Thumbnail Container */}
-                  {log.image && (
+                  {log.images && log.images.length > 0 && (
                     <div className="w-full lg:w-48 h-48 lg:h-32 rounded-2xl overflow-hidden relative border border-white/5 flex-shrink-0">
                       <Image
-                        src={log.image}
+                        src={log.images[0]}
                         alt={log.title}
                         fill
                         className="object-cover opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 grayscale hover:grayscale-0"

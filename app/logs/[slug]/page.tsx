@@ -4,6 +4,7 @@ import { logs } from "@/data/logs";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { AssistantWidget } from "@/components/AssistantWidget";
+import { DownloadButton } from "@/components/DownloadButton";
 import { 
   ArrowLeft, 
   Clock, 
@@ -12,13 +13,69 @@ import {
   Activity,
   Cpu,
   ShieldAlert,
-  Fingerprint
+  Fingerprint,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
-import React from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+
+const ImageCarousel = ({ images, title }: { images: string[], title: string }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+
+  return (
+    <div className="w-full h-[50vh] md:h-[65vh] relative overflow-hidden bg-black/20">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={images[currentIndex]}
+            alt={`${title} - image ${currentIndex + 1}`}
+            fill
+            priority
+            className="object-cover opacity-80 grayscale-[0.25]"
+          />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/0 via-[#141414]/40 to-[#141414]" />
+
+      {images.length > 1 && (
+        <>
+          <button onClick={prev} className="absolute left-6 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-colors z-20">
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
+          <button onClick={next} className="absolute right-6 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full backdrop-blur-md transition-colors z-20">
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
+          <div className="absolute bottom-8 right-12 flex gap-2 z-20">
+            {images.map((_, idx) => (
+              <div 
+                key={idx} 
+                className={cn(
+                  "w-2 h-2 rounded-full transition-all",
+                  idx === currentIndex ? "bg-teal-500 w-6" : "bg-white/30"
+                )} 
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 export default function LogDetailPage({
   params,
@@ -27,6 +84,11 @@ export default function LogDetailPage({
 }) {
   const resolvedParams = React.use(params);
   const log = logs.find((l) => l.id === resolvedParams.slug);
+
+  // Force scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [resolvedParams.slug]);
 
   if (!log) {
     notFound();
@@ -52,22 +114,14 @@ export default function LogDetailPage({
     <main className="relative z-10 min-h-screen text-foreground selection:bg-teal-500/30">
       <Header />
       
-      {/* Hero Image Section */}
-      {log.image && (
+      {/* Dynamic Hero Section */}
+      {log.images && log.images.length > 0 && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
-          className="w-full h-[50vh] md:h-[65vh] relative overflow-hidden"
         >
-          <Image
-            src={log.image}
-            alt={log.title}
-            fill
-            priority
-            className="object-cover opacity-40 grayscale"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/0 via-[#141414]/40 to-[#141414]" />
+          <ImageCarousel images={log.images} title={log.title} />
         </motion.div>
       )}
 
@@ -77,7 +131,7 @@ export default function LogDetailPage({
         animate="visible"
         className={cn(
           "max-w-4xl mx-auto px-6 md:px-12 pb-32",
-          log.image ? "pt-12 md:pt-24" : "pt-48"
+          log.images && log.images.length > 0 ? "pt-12 md:pt-24" : "pt-48"
         )}
       >
         {/* Back Button */}
@@ -110,10 +164,17 @@ export default function LogDetailPage({
           <motion.p variants={itemVariants} className="text-2xl text-muted-foreground font-light leading-relaxed italic border-l-2 border-teal-500/30 pl-8">
             {log.summary}
           </motion.p>
+          
+          {/* Download Paper Button (Only for relevant logs) */}
+          {log.id === "xr-business-society" && (
+            <motion.div variants={itemVariants}>
+              <DownloadButton href="/downloads/Research_Paper.pdf" />
+            </motion.div>
+          )}
         </div>
 
         {/* Content Body */}
-        <motion.article variants={itemVariants} className="prose prose-invert prose-teal max-w-none">
+        <motion.article variants={itemVariants} className="max-w-none">
           <div className="space-y-12 text-lg text-foreground/80 leading-relaxed font-light">
              {/* We simulate a basic markdown rendering for now */}
              {log.content.split('##').map((section, idx) => {
@@ -127,9 +188,10 @@ export default function LogDetailPage({
                      </div>
                      {title.trim()}
                    </h2>
-                   <div className="whitespace-pre-line">
-                     {contentLines.join('\n').trim()}
-                   </div>
+                   <div 
+                     className="whitespace-pre-line"
+                     dangerouslySetInnerHTML={{ __html: contentLines.join('\n').trim() }} 
+                   />
                  </div>
                );
              })}
