@@ -106,7 +106,7 @@ export const projects: Project[] = [
     ],
     techStack: ["8th Wall", "Three.js", "WebXR", "Next.js"],
     tags: ["AR", "Heritage", "Spatial Web"],
-    image: "/projects/traylz.jpeg",
+    image: "/projects/traylz.jpg",
     span: "medium",
     isSpatial: true,
     hint: "Ask how 'Ghost Windows' are preserving heritage through AR.",
