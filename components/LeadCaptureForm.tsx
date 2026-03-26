@@ -59,7 +59,8 @@ export const LeadCaptureForm = () => {
         .insert([{ 
           contact_email: email, 
           company_url: formattedUrl, 
-          status: "new" 
+          status: "new",
+          source: "website" 
         }]);
 
       if (error) throw error;
