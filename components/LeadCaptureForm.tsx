@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { extractCompanyNameFromUrl } from "@/lib/utils";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -54,11 +55,14 @@ export const LeadCaptureForm = () => {
     setStatus("loading");
 
     try {
+      const companyName = extractCompanyNameFromUrl(formattedUrl);
+
       const { error } = await supabase
         .from("leads")
         .insert([{ 
           contact_email: email, 
           company_url: formattedUrl, 
+          company_name: companyName, // Add the derived company name
           status: "new",
           source: "website" 
         }]);
@@ -72,7 +76,24 @@ export const LeadCaptureForm = () => {
     } catch (err: any) {
       console.error("Supabase Error:", JSON.stringify(err, null, 2));
       setStatus("error");
-      setMessage(`Transmission failed: ${err.message || "Please try again."}`);
+
+      let userMessage = `Transmission failed: ${err.message || "Please try again."}`;
+
+      let supabaseError = err;
+      // If the error message itself is a stringified JSON, parse it to access code/message properties correctly
+      if (typeof err.message === 'string' && err.message.startsWith('{')) {
+        try {
+          supabaseError = JSON.parse(err.message);
+        } catch (parseError) {
+          // If parsing fails, stick with the original error object
+        }
+      }
+
+      if (supabaseError && supabaseError.code === "23505" && supabaseError.message.includes("leads_company_url_key")) {
+        userMessage = "A lead for this company URL already exists. Please use a unique URL or contact support if you believe this is an error.";
+      }
+      
+      setMessage(userMessage);
     }
   };
 

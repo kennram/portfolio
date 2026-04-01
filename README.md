@@ -22,3 +22,5 @@ To architect and design human-centered, socio-technical systems that bridge the 
 ## Roadmap
 - **Phase 6:** Research Log Management System (Supabase/NextAuth integration).
 - **Phase 7:** Enhanced data visualization for project impact metrics.
+
+## npm run dev
