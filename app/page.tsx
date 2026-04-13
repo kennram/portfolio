@@ -3,15 +3,13 @@
 import { Header } from "@/components/Header";
 import { BentoGrid } from "@/components/BentoGrid";
 import { AssistantWidget } from "@/components/AssistantWidget";
-import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { Target, Zap, Heart, Sparkles } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
   const pillars = ["Systems", "Environments", "Cognition", "Intelligence"] as const;
-  const [showForm, setShowForm] = useState(false);
   
   // Mouse parallax for Hero Blueprint
   const mouseX = useMotionValue(0);
@@ -316,52 +314,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Strategic Audit Section */}
-      <section className="py-48 px-6 md:px-12 bg-[#141414] mt-32 border-t border-white/5">
-        <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center space-y-6">
-            <h2 className="text-[clamp(2rem,6vw,4rem)] font-bold tracking-tighter leading-[0.9] text-white">
-              Your technology is either a Revenue Engine or a Cost Center.
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-2xl mx-auto">
-              Ready to fix the leaks? Request a Strategic Audit to identify the "Revenue Friction" in your digital ecosystem.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button 
-                onClick={() => setShowForm(!showForm)}
-                className="px-12 py-6 bg-teal-600 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-teal-500 transition-all shadow-2xl mt-8"
-              >
-                {showForm ? 'Close Audit Form' : 'Request Strategic Audit'}
-              </button>
-              <Link 
-                href="/audit"
-                className="px-12 py-6 bg-white/5 border border-white/10 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-white/10 transition-all shadow-lg mt-8"
-              >
-                Learn About The Process
-              </Link>
-            </div>
+      {/* Strategic Audit Hook */}
+      <section className="py-32 px-6 md:px-12 bg-black border-y border-white/5 text-center space-y-12">
+        <div className="max-w-4xl mx-auto space-y-6">
+          <h2 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-tighter text-white">
+            Ready for a Strategic Audit?
+          </h2>
+          <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">
+            Your technology is either a Revenue Engine or a Cost Center. Let's build your roadmap.
+          </p>
+          <div className="flex gap-6 justify-center">
+            <Link 
+              href="/audit"
+              className="px-12 py-6 bg-teal-600 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-teal-500 transition-all shadow-2xl"
+            >
+              Request Strategic Audit
+            </Link>
           </div>
-
-          <AnimatePresence>
-            {showForm && (
-              <motion.div 
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="overflow-hidden"
-              >
-                <div className="pt-8 border-t border-white/10">
-                  <div className="max-w-xl mx-auto space-y-6">
-                    <h3 className="text-2xl font-bold tracking-tighter text-white">Initiate Your Diagnostic</h3>
-                    <p className="text-sm text-muted-foreground font-light">To provide a high-fidelity diagnostic, I need to understand your current digital footprint. Your details are secure and only used for your audit.</p>
-                    <LeadCaptureForm />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
       </section>
+
+      <AssistantWidget />
 
       {/* Footer */}
       <footer className="mt-48 py-24 border-t border-white/5 bg-black/40 backdrop-blur-xl px-6 md:px-12">
