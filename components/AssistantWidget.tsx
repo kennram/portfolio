@@ -198,14 +198,16 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
                   <div className="bg-white/5 p-4 rounded-2xl rounded-tl-none border border-white/5 text-sm text-muted-foreground leading-relaxed prose prose-invert prose-sm max-w-full">
                     <ReactMarkdown
                       components={{
-                        a: ({ node, ...props }) => (
+                        a: ({ href, children }) => (
                           <a 
-                            {...props} 
+                            href={href}
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="text-teal-500 hover:text-teal-400 underline decoration-teal-500/30 underline-offset-4 font-bold transition-colors cursor-pointer pointer-events-auto"
                             onClick={(e) => e.stopPropagation()}
-                          />
+                          >
+                            {children}
+                          </a>
                         )
                       }}
                     >
@@ -224,9 +226,9 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
                   >
                     <ReactMarkdown
                       components={{
-                        a: ({ node, ...props }) => (
+                        a: ({ href, children }) => (
                           <a 
-                            {...props} 
+                            href={href}
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className={cn(
@@ -234,7 +236,9 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
                               m.role === "user" ? "text-white decoration-white/30" : "text-teal-500 decoration-teal-500/30 hover:text-teal-400"
                             )} 
                             onClick={(e) => e.stopPropagation()}
-                          />
+                          >
+                            {children}
+                          </a>
                         )
                       }}
                     >

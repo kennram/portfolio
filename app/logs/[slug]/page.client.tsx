@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { AssistantWidget } from "@/components/AssistantWidget";
 import { DownloadButton } from "@/components/DownloadButton";
@@ -20,15 +20,12 @@ import { motion, Variants } from "framer-motion";
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export default function LogDetailPageClient({ log }: { log: any }) {
-  const [mounted, setMounted] = useState(false);
+import { ResearchLog } from "@/data/logs";
 
+export default function LogDetailPageClient({ log }: { log: ResearchLog }) {
   useEffect(() => {
-    setMounted(true);
     window.scrollTo(0, 0);
   }, [log.id]);
-
-  if (!mounted) return null;
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
