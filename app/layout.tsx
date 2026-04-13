@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Kenn Davis Portfolio",
     images: [
       {
-        url: "/og-image.png", // User would need to provide this
+        url: "/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kenn Davis | Socio-Technical Architect",
     description: "Bridging technical complexity and human need.",
-    creator: "@kenndavis", // Replace with actual handle if known
+    creator: "@kenndavis",
   },
 };
 
@@ -66,6 +67,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ScrollToTop />
         <ParticleBackground />
         <SmoothScroll>
           {children}
@@ -74,3 +76,4 @@ export default function RootLayout({
     </html>
   );
 }
+

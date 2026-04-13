@@ -5,15 +5,21 @@ import { AssistantWidget } from "@/components/AssistantWidget";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { Target, Zap, Heart, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function AuditPage() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    // Attempt multiple strategies to force the top
     window.scrollTo(0, 0);
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "instant" });
+    }
   }, []);
 
   return (
-    <main className="relative z-10 min-h-screen pb-32">
+    <main ref={scrollRef} className="relative z-10 min-h-screen pb-32">
       <Header />
       
       <section className="pt-48 pb-32 px-6 md:px-12">
