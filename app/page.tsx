@@ -363,7 +363,44 @@ export default function Home() {
         </div>
       </section>
 
-      <AssistantWidget />
+      {/* Footer */}
+      <footer className="mt-48 py-24 border-t border-white/5 bg-black/40 backdrop-blur-xl px-6 md:px-12">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold tracking-tighter">KENN DAVIS</h3>
+            <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">Socio-Technical Architect & HCD Specialist</p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-16 lg:gap-24">
+            <div className="space-y-6">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white">Social</h4>
+              <ul className="space-y-4 text-xs uppercase tracking-widest text-muted-foreground">
+                <li><a href="https://www.linkedin.com/in/daviskenn/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-500 transition-colors">LinkedIn</a></li>
+                <li><a href="https://github.com/kennram-code" target="_blank" rel="noopener noreferrer" className="hover:text-teal-500 transition-colors">GitHub</a></li>
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white">Navigation</h4>
+              <ul className="space-y-4 text-xs uppercase tracking-widest text-muted-foreground">
+                {pillars.map(p => (
+                  <li key={p}><a href={`#${p.toLowerCase()}`} className="hover:text-teal-500 transition-colors">{p}</a></li>
+                ))}
+                <li><a href="#philosophy" className="hover:text-teal-500 transition-colors">Philosophy</a></li>
+              </ul>
+            </div>
+            <div className="space-y-6 hidden lg:block">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white">Contact</h4>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground hover:text-teal-500 cursor-pointer transition-colors">
+                kenndavisux@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto mt-24 pt-8 border-t border-white/5 flex justify-between items-center text-[10px] uppercase tracking-[0.4em] text-white/20 font-medium">
+          <span>© 2026 KENN DAVIS. ALL RIGHTS RESERVED.</span>
+          <span className="hidden md:block">BUILT WITH NEXT.JS 16 + TAILWIND 4</span>
+        </div>
+      </footer>
     </main>
   );
 }
