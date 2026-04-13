@@ -160,6 +160,52 @@ export default function Home() {
         />
       </section>
 
+      {/* Strategic Audit Hook Section */}
+      <section id="audit-hook" className="py-32 px-6 md:px-12 bg-black text-white relative overflow-hidden border-t border-white/5">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-500/50 to-transparent" />
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <span className="text-[10px] font-mono text-teal-500 uppercase tracking-[0.6em]">Growth Engineering</span>
+            <h2 className="text-[clamp(2.5rem,6vw,4rem)] font-bold tracking-tighter leading-[0.9]">
+              Your technology is either a Revenue Engine or a Cost Center.
+            </h2>
+            <p className="text-xl text-muted-foreground font-light leading-relaxed">
+              Most SMEs are losing 20-30% of their monthly revenue to "Digital Debt"—outdated conversion flows, manual bottlenecks, and invisible friction. I identify the leaks and build the bridge to your next stage of growth.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <a 
+                href="#audit-form"
+                className="px-8 py-4 bg-teal-600 text-white rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all shadow-2xl shadow-teal-600/30 text-center"
+              >
+                Request Bespoke Growth Audit
+              </a>
+              <Link 
+                href="/audit"
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white/10 transition-all text-center"
+              >
+                Learn About The Process
+              </Link>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-6">
+            {[
+              { title: "Identify", desc: 'Locate the "Revenue Friction" killing your conversion rates.' },
+              { title: "Automate", desc: 'Buy back 10+ hours a week by removing manual operational debt.' },
+              { title: "Scale", desc: 'Deploy a transformation roadmap that turns your brand into a market authority.' },
+            ].map((point, i) => (
+              <div key={i} className="p-8 bg-white/5 rounded-3xl border border-white/5 flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center shrink-0 border border-teal-500/20 text-teal-500 font-bold font-mono">0{i+1}</div>
+                <div>
+                  <h4 className="text-sm font-bold uppercase tracking-widest text-teal-500 mb-2">{point.title}</h4>
+                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{point.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3E's Framework Section */}
       <section className="py-32 px-6 md:px-12 border-y border-white/5 bg-white/[0.01] relative overflow-hidden">
         {/* Background Decorative Element */}
@@ -445,27 +491,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* High-Impact CTA Section */}
-      <section className="py-32 px-6 md:px-12 bg-[#002b2b]">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
-          <div className="space-y-6 text-center md:text-left">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-[0.9]">
-              Ready for a <br /> new direction?
-            </h2>
-            <p className="text-xl text-teal-100/60 font-light max-w-md">
-              Most digital experiences are misaligned with human needs. I bridge that gap using the 3E’s Framework. Let’s audit your infrastructure and uncover hidden growth opportunities.
-            </p>
-          </div>
-          
-          <div className="flex flex-col gap-6 w-full max-w-md">
-            <Link 
-              href="/audit"
-              className="px-12 py-6 bg-teal-500 text-white rounded-full text-sm font-bold uppercase tracking-[0.2em] hover:bg-teal-400 transition-all shadow-2xl block text-center"
-            >
-              Request Strategic Audit
-            </Link>
-          </div>
-        </div>
+      {/* High-Impact Lead Capture Section */}
+      <section className="py-32 px-6 md:px-12 bg-[#002b2b] flex justify-center">
+        <LeadCaptureForm />
       </section>
 
       <AssistantWidget />
