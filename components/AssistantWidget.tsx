@@ -84,6 +84,14 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
 
   const handleQuickTap = (tap: string) => {
     setShowNudge(false);
+    // Track quick tap in GA4
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'mebot_suggestion_clicked', {
+        'event_category': 'Engagement',
+        'event_label': tap
+      });
+    }
+
     if (append) {
       append({ role: "user", content: tap });
     } else {
@@ -93,8 +101,26 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
   };
 
   const toggleChat = () => {
-    setIsOpen(!isOpen);
+    const newState = !isOpen;
+    setIsOpen(newState);
     setShowNudge(false);
+    
+    // Track toggle in GA4
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', newState ? 'mebot_opened' : 'mebot_closed', {
+        'event_category': 'Engagement'
+      });
+    }
+  };
+
+  const onFormSubmit = (e: React.FormEvent) => {
+    // Track message send in GA4
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'mebot_message_sent', {
+        'event_category': 'Engagement'
+      });
+    }
+    handleSubmit(e);
   };
 
   return (
@@ -258,7 +284,7 @@ export const AssistantWidget = ({ projectId }: AssistantWidgetProps) => {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleSubmit} className="p-4 border-t border-white/5 bg-white/[0.01] z-10">
+            <form onSubmit={onFormSubmit} className="p-4 border-t border-white/5 bg-white/[0.01] z-10">
               <div className="relative">
                 <input
                   value={input}

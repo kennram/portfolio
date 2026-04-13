@@ -42,9 +42,38 @@ export const LeadCaptureForm = () => {
     }
 
     let formattedUrl = url.trim();
+    // Prepend https if no protocol
     if (!/^https?:\/\//i.test(formattedUrl)) {
       formattedUrl = `https://${formattedUrl}`;
     }
+
+    // Now, perform robust URL normalization
+    try {
+      const urlObject = new URL(formattedUrl);
+      urlObject.hostname = urlObject.hostname.toLowerCase(); // Lowercase domain
+      // Remove 'www.' if present
+      if (urlObject.hostname.startsWith('www.')) {
+        urlObject.hostname = urlObject.hostname.substring(4);
+      }
+      // Remove trailing slash from pathname, if any, and ensure it's just '/' for root
+      // If the URL has a path (e.g., example.com/path), we keep the path but normalize it.
+      // If it's just a root domain, ensure pathname is '/'
+      if (urlObject.pathname && urlObject.pathname !== '/') {
+        urlObject.pathname = urlObject.pathname.replace(/\/+$/, '');
+      } else {
+        urlObject.pathname = '/';
+      }
+      urlObject.search = ''; // Remove query parameters
+      urlObject.hash = ''; // Remove hash
+
+      formattedUrl = urlObject.toString();
+    } catch (e) {
+      console.warn("Failed to normalize URL after prepending HTTPS, possibly invalid URL structure:", e);
+      // Fallback: If normalization fails, proceed with the basic formattedUrl
+      // but the validateUrl check below should catch truly invalid formats.
+    }
+
+    console.log("Original URL input:", url); // Log 1
 
     if (!validateUrl(formattedUrl)) {
       setStatus("error");
@@ -56,6 +85,8 @@ export const LeadCaptureForm = () => {
 
     try {
       const companyName = extractCompanyNameFromUrl(formattedUrl);
+      console.log("Normalized URL for Supabase:", formattedUrl); // Log 2
+      console.log("Derived Company Name for Supabase:", companyName); // Log 3
 
       const { error } = await supabase
         .from("leads")
