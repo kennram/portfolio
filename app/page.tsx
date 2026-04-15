@@ -179,6 +179,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Collaborators / Trusted By */}
+      <section className="py-24 px-6 md:px-12 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`, backgroundSize: '24px 24px' }} />
+        
+        <div className="max-w-6xl mx-auto relative z-10">
+          <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-16 text-center opacity-50 font-bold">
+            Strategic Partners
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-12 md:gap-x-20">
+            {[
+              "Bank of Ireland", 
+              "Culture Night", 
+              "Dublin Tech Summit", 
+              "Getty Images", 
+              "Failte Ireland", 
+              "Windmill Lane Recording Studios",
+              "Landmrk"
+            ].map((partner) => (
+              <motion.span 
+                key={partner}
+                whileHover={{ y: -2, opacity: 1 }}
+                className="text-lg md:text-xl font-bold tracking-[0.2em] text-white/30 uppercase cursor-default transition-all duration-500 hover:text-teal-500"
+              >
+                {partner}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Pillar Sections */}
       <div className="space-y-48 px-6 md:px-12 relative pt-32">
         {pillars.map((pillar, idx) => (
